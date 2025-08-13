@@ -88,14 +88,9 @@ class AnimationController {
       return;
     }
 
-    console.log(`Found ${timelineItems.length} timeline items`);
+    console.log(`Setting up reveal animations for ${timelineItems.length} timeline items`);
 
-    // Initially hide items for animation
-    timelineItems.forEach(item => {
-      item.classList.add('js-hidden');
-    });
-
-    // Create dedicated observer for timeline with perfect settings
+    // Create intersection observer for smooth reveal animations
     const timelineObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -103,40 +98,28 @@ class AnimationController {
           const allTimelineItems = Array.from(document.querySelectorAll('.timeline-item'));
           const itemIndex = allTimelineItems.indexOf(entry.target);
           
-          // Add staggered animation with delay
+          // Add staggered reveal animation with delay
           setTimeout(() => {
-            entry.target.classList.remove('js-hidden');
             entry.target.classList.add('animate');
-            console.log(`Timeline item ${itemIndex + 1} animated`);
-          }, itemIndex * 200); // 200ms stagger between items
+            console.log(`Timeline item ${itemIndex + 1} revealed with slide animation`);
+          }, itemIndex * 300); // 300ms stagger for better visual effect
           
           // Unobserve after animation to prevent re-triggering
           timelineObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1, // Trigger when 10% of element is visible
-      rootMargin: '-10px 0px' // Small margin for better timing
+      threshold: 0.15, // Trigger when 15% of element is visible
+      rootMargin: '0px 0px -50px 0px' // Start animation before fully in view
     });
 
-    // Observe each timeline item
+    // Start observing all timeline items
     timelineItems.forEach((item, index) => {
       timelineObserver.observe(item);
-      console.log(`Timeline item ${index + 1} being observed`);
+      console.log(`Timeline item ${index + 1} ready for reveal animation`);
     });
 
     this.observers.set('timeline', timelineObserver);
-
-    // Fallback: Show timeline items after 3 seconds if animation fails
-    setTimeout(() => {
-      timelineItems.forEach(item => {
-        if (item.classList.contains('js-hidden')) {
-          item.classList.remove('js-hidden');
-          item.classList.add('animate');
-          console.log('Fallback: Timeline item shown');
-        }
-      });
-    }, 3000);
   }
 
   // ========================================

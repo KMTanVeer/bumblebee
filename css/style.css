@@ -3511,17 +3511,19 @@ body.light-theme .btn-modern .btn-text {
   justify-content: flex-end;
   align-items: center;
   
-  /* Make visible by default, then animate on scroll */
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* Initial state for reveal animation - slide from right */
+  opacity: 0;
+  transform: translateX(100px) scale(0.9);
+  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .timeline-item:nth-child(even) {
   justify-content: flex-start;
+  /* Even items slide from left */
+  transform: translateX(-100px) scale(0.9);
 }
 
-/* Animated state when in view */
+/* Animated state when scrolled into view */
 .timeline-item.animate {
   opacity: 1;
   transform: translateX(0) scale(1);
