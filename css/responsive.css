@@ -1,0 +1,1145 @@
+/* ========================================
+   Mobile & Tablet Responsive Design
+======================================== */
+
+/* ========================================
+   Mobile Hero Section Optimization
+======================================== */
+
+/* Mobile Landscape and Portrait */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 1rem 0;
+    background-size: 40px 40px;
+  }
+  
+  .hero-section::before {
+    background-size: 30px 30px;
+    opacity: 0.2;
+  }
+  
+  .hero-container {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
+  
+  /* Mobile Hero Badge */
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1.5rem;
+    gap: 0.3rem;
+  }
+  
+  .badge-icon {
+    font-size: 1rem;
+  }
+  
+  /* Mobile Typography */
+  .hero-greeting {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-name {
+    font-size: clamp(2rem, 10vw, 4rem) !important;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+  }
+  
+  .hero-title {
+    font-size: clamp(1.2rem, 6vw, 2rem) !important;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+  
+  .hero-university {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: center;
+  }
+  
+  .university-icon {
+    font-size: 1.2rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    max-width: 95%;
+    text-align: center;
+  }
+  
+  /* Mobile highlight words */
+  .highlight-word::after {
+    height: 1px;
+  }
+  
+  /* Ensure responsive text wrapping */
+  .hero-title,
+  .hero-description {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Mobile Stats - Stacked Layout */
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(0, 245, 255, 0.05);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    min-width: 200px;
+    justify-content: center;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    margin-bottom: 0;
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    margin: 0;
+    text-align: left;
+  }
+  
+  /* Mobile Buttons */
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+    justify-content: center;
+    min-height: 50px;
+    border-radius: 12px;
+  }
+  
+  /* Enhanced mobile button effects */
+  .btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .btn-primary {
+    box-shadow: 0 4px 20px rgba(0, 245, 255, 0.3);
+  }
+  
+  .btn-secondary {
+    border-width: 2px;
+  }
+  
+  /* Mobile Background Elements */
+  .neural-network {
+    display: none; /* Hide complex animations on mobile */
+  }
+  
+  .geometric-shapes .shape {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .hexagon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .triangle {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 15px;
+  }
+  
+  .circle {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .square {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .energy-particles {
+    opacity: 0.6;
+  }
+  
+  .particle {
+    width: 3px;
+    height: 3px;
+  }
+  
+  /* Mobile Scroll Indicator */
+  .scroll-indicator {
+    bottom: 1.5rem;
+  }
+  
+  .scroll-text {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .scroll-animation {
+    height: 40px;
+  }
+  
+  .scroll-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Mobile Portrait Only */
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 60px;
+    margin-top: -60px;
+  }
+  
+  /* Mobile Portrait About Section */
+  .profile-circle {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .profile-inner {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .electrical-frame {
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+  
+  .frame-corner {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .about-heading {
+    font-size: clamp(1.2rem, 7vw, 2rem);
+  }
+  
+  .paragraph-block {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .paragraph-icon {
+    margin: 0 auto;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-card .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .voltage-indicator {
+    width: 100px;
+    padding: 0.8rem;
+  }
+  
+  .voltage-value {
+    font-size: 1.2rem;
+  }
+  
+  /* Hide some complex animations on small screens */
+  .electrical-sparks,
+  .voltage-waves {
+    display: none;
+  }
+  
+  .energy-orbs {
+    opacity: 0.5;
+  }
+  
+  /* Mobile Section Organization */
+  .biography-section,
+  .statistics-section,
+  .expertise-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-divider {
+    margin-bottom: 1rem;
+  }
+  
+  .divider-icon {
+    font-size: 1.2rem;
+    padding: 0.4rem;
+  }
+  
+  .divider-text {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  
+  .about-text-section {
+    gap: 1.5rem;
+  }
+
+  .hero-name {
+    font-size: clamp(1.8rem, 12vw, 3rem) !important;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1rem, 7vw, 1.5rem) !important;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Stack stats vertically on very small screens */
+  .hero-stats {
+    gap: 1rem;
+  }
+  
+  .stat-item {
+    min-width: 180px;
+    padding: 0.8rem 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+  }
+  
+  /* Simplify buttons for small screens */
+  .btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+    max-width: 250px;
+  }
+  
+  /* Reduce background animation complexity */
+  .geometric-shapes {
+    opacity: 0.3;
+  }
+  
+  .energy-particles {
+    opacity: 0.4;
+  }
+  
+  /* Hide some decorative elements on very small screens */
+  .shape-3, .shape-4 {
+    display: none;
+  }
+  
+  .particle-4, .particle-5, .particle-6 {
+    display: none;
+  }
+  
+  /* Mobile loading optimization */
+  .loading-screen {
+    background-size: 30px 30px;
+  }
+  
+  .loading-logo {
+    font-size: 1.5rem;
+  }
+  
+  /* Improve mobile performance */
+  .hero-section::after {
+    display: none;
+  }
+  
+  /* Mobile safe areas for newer phones */
+  .hero-container {
+    padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 1rem) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 1rem);
+  }
+  
+  /* Mobile hero spacing */
+  .hero-content > * {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Large Tablets */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  /* Mobile About Section - Electrical Theme */
+  .about-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+  
+  .electrical-background {
+    opacity: 0.3;
+  }
+  
+  .circuit-line {
+    width: 150px !important;
+    height: 100px !important;
+  }
+  
+  .circuit-node {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .spark {
+    width: 30px;
+    height: 2px;
+  }
+  
+  .voltage-wave {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .profile-circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .profile-inner {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .electrical-frame {
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+  }
+  
+  .frame-corner {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .voltage-indicator {
+    width: 120px;
+    margin: 0 auto;
+  }
+  
+  .about-text-section {
+    text-align: left;
+  }
+  
+  /* Mobile Organization */
+  .biography-section,
+  .statistics-section,
+  .expertise-section {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-divider {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .divider-text {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+  
+  .divider-line {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .about-text-section {
+    gap: 2rem;
+  }
+  
+  .engineer-badge {
+    margin: 0 auto;
+  }
+  
+  .about-heading {
+    text-align: center;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  
+  .engineering-stats {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-circle {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+
+  .profile-initials {
+    font-size: 3rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 80px 0;
+    --element-spacing: 1.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* Navigation */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    transition: right 0.3s ease;
+    z-index: 999;
+    border-left: 1px solid rgba(0, 245, 255, 0.2);
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+
+  .nav-item {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu.active .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-menu.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+  .nav-menu.active .nav-item:nth-child(2) { transition-delay: 0.2s; }
+  .nav-menu.active .nav-item:nth-child(3) { transition-delay: 0.3s; }
+  .nav-menu.active .nav-item:nth-child(4) { transition-delay: 0.4s; }
+  .nav-menu.active .nav-item:nth-child(5) { transition-delay: 0.5s; }
+  .nav-menu.active .nav-item:nth-child(6) { transition-delay: 0.6s; }
+
+  .nav-link {
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transition: all var(--transition-normal);
+  }
+
+  .nav-link:hover {
+    background: rgba(0, 245, 255, 0.1);
+  }
+
+  .hamburger {
+    display: flex;
+    z-index: 1001;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    transition: all var(--transition-normal);
+    border-radius: 3px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+    background: var(--accent);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+    background: var(--accent);
+  }
+
+  .nav-actions {
+    gap: 0.75rem;
+  }
+
+  .navbar-brand {
+    gap: 0.5rem;
+  }
+
+  .brand-image {
+    width: 35px;
+    height: 35px;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  /* Hero Section */
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  /* Timeline */
+  .timeline-line {
+    left: 2rem;
+  }
+
+  .timeline-item {
+    justify-content: flex-start;
+    padding-left: 4rem;
+  }
+
+  .timeline-item:nth-child(even) {
+    justify-content: flex-start;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    text-align: left;
+  }
+
+  .timeline-dot {
+    left: 2rem;
+  }
+
+  .timeline-content {
+    width: 100%;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* Projects */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Forms */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-container {
+    padding: 1.5rem;
+  }
+
+  /* Footer */
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    gap: 2rem;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 60px 0;
+    --element-spacing: 1rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  /* Typography */
+  .section-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Navigation */
+  .nav-container {
+    padding: 0 1rem;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .nav-menu {
+    width: 100%;
+    right: -100%;
+  }
+
+  /* Hero */
+  .hero-greeting {
+    font-size: 1rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .hero-title {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .hero-university {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    gap: 1rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* About */
+  .profile-circle {
+    width: 220px;
+    height: 220px;
+  }
+
+  .profile-initials {
+    font-size: 2.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-item h4 {
+    font-size: 1.5rem;
+  }
+
+  /* Skills */
+  .skill-category {
+    padding: 1.5rem;
+  }
+
+  .category-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .category-icon {
+    font-size: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-tags {
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* Projects */
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-tech {
+    gap: 0.3rem;
+  }
+
+  .project-tech span {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* Contact */
+  .contact-item {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .social-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .contact-form h3 {
+    font-size: 1.3rem;
+  }
+
+  /* Footer */
+  .footer-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .footer-links {
+    gap: 0.5rem;
+  }
+
+  .footer-social {
+    gap: 1.5rem;
+  }
+
+  .footer-social-link {
+    font-size: 1.3rem;
+  }
+
+  /* Floating elements - reduce on mobile */
+  .floating-elements {
+    display: none;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .reduce-motion {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Very Small Mobile Phones */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .hero-name {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+
+  .profile-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .profile-initials {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .skill-category {
+    padding: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+  .contact-form-container {
+    padding: 1rem;
+  }
+}
+
+/* ========================================
+   Landscape Mobile Orientation
+======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .hero-description {
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    gap: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+}
+
+/* ========================================
+   Print Styles
+======================================== */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .navbar,
+  .floating-elements,
+  .loading-screen,
+  .btn,
+  #particles-canvas,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+
+  .timeline-item,
+  .project-card,
+  .skill-category {
+    page-break-inside: avoid;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* ========================================
+   Accessibility & Motion Preferences
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-pulse,
+  .animate-rotate,
+  .animate-bounce {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --bg-primary: #000000;
+    --bg-secondary: #111111;
+    --accent: #00ffff;
+    --border: #ffffff;
+  }
+
+  .btn-primary {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+}
+
+/* Dark Mode Preference */
+@media (prefers-color-scheme: light) {
+  body:not(.dark-theme) {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+  }
+}
+
+/* ========================================
+   Container Queries (Future-proofing)
+======================================== */
+@container (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@container (max-width: 480px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   Utility Classes for Responsive Design
+======================================== */
+.hidden-mobile {
+  display: block;
+}
+
+.visible-mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none;
+  }
+  
+  .visible-mobile {
+    display: block;
+  }
+}
+
+.text-center-mobile {
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .text-center-mobile {
+    text-align: center;
+  }
+}
+
+/* Responsive text sizes */
+.text-responsive-lg {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.text-responsive-md {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.text-responsive-sm {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+}
