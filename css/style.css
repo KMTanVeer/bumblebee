@@ -3511,21 +3511,36 @@ body.light-theme .btn-modern .btn-text {
   justify-content: flex-end;
   align-items: center;
   
-  /* Initial state for scroll-triggered animation */
+  /* Initial hidden state for scroll reveal */
   opacity: 0;
-  transform: translateX(100px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(80px) scale(0.95);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .timeline-item:nth-child(even) {
   justify-content: flex-start;
-  transform: translateX(-100px);
+  transform: translateX(-80px) scale(0.95);
 }
 
 /* Animated state when in view */
 .timeline-item.animate {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
+}
+
+/* Enhanced animation with glow effect when animated */
+.timeline-item.animate .timeline-content {
+  box-shadow: 
+    0 8px 32px rgba(64, 224, 208, 0.15),
+    0 0 0 1px rgba(64, 224, 208, 0.08);
+}
+
+.timeline-item.animate .timeline-dot {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 
+    0 0 20px rgba(64, 224, 208, 0.6),
+    0 0 40px rgba(64, 224, 208, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Hover effects for timeline cards */
@@ -3571,6 +3586,7 @@ body.light-theme .btn-modern .btn-text {
     var(--shadow-glow),
     0 0 20px var(--neon-blue);
   animation: timeline-dot-pulse 2s ease-in-out infinite;
+  transition: all 0.8s ease;
 }
 
 .timeline-dot::before {

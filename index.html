@@ -72,26 +72,81 @@
     }
     </script>
     
-    <!-- Fonts -->
+    <!-- Fonts with Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
     
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/particles.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Critical CSS Inline for Immediate Render -->
+    <style>
+        /* Critical CSS for Performance - Above the fold content only */
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:#0a0a0a;color:#ededed;overflow-x:hidden;line-height:1.6}
+        .navbar{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,10,10,0.95);backdrop-filter:blur(10px);border-bottom:1px solid #333;transition:all 0.3s ease}
+        .nav-container{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:80px}
+        .navbar-brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:#ededed;font-weight:600}
+        .brand-image{width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid #00f5ff}
+        .brand-image img{width:100%;height:100%;object-fit:cover}
+        .logo-text{font-family:'Orbitron',monospace;font-weight:700;font-size:1.2rem;background:linear-gradient(45deg,#00f5ff,#bf00ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .nav-menu{display:flex;list-style:none;gap:2rem;margin:0;padding:0}
+        .nav-link{color:#ededed;text-decoration:none;font-weight:500;padding:0.5rem 1rem;border-radius:8px;transition:all 0.3s ease}
+        .nav-link:hover,.nav-link.active{color:#00f5ff;background:rgba(0,245,255,0.1)}
+        .theme-toggle{background:none;border:none;color:#ededed;font-size:1.2rem;cursor:pointer;padding:0.5rem;border-radius:50%;transition:all 0.3s ease}
+        .theme-toggle:hover{background:rgba(0,245,255,0.1);transform:scale(1.1)}
+        .hamburger{display:none;flex-direction:column;cursor:pointer;gap:4px}
+        .hamburger span{width:25px;height:3px;background:#ededed;border-radius:3px;transition:0.3s}
+        .hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,rgba(0,245,255,0.08) 0%,rgba(191,0,255,0.08) 50%,rgba(255,20,147,0.08) 100%);margin-top:-80px;padding-top:80px;overflow:hidden}
+        .hero-container{max-width:1200px;margin:0 auto;padding:0 2rem;text-align:center;position:relative;z-index:10}
+        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(0,245,255,0.1);border:1px solid rgba(0,245,255,0.3);padding:0.5rem 1rem;border-radius:50px;font-size:0.9rem;margin-bottom:2rem;color:#00f5ff}
+        .hero-greeting{font-size:1.2rem;color:#a3a3a3;margin-bottom:1rem}
+        .hero-name{font-family:'Orbitron',monospace;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;margin:1rem 0;background:linear-gradient(45deg,#00f5ff,#bf00ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+        .hero-title{font-size:clamp(1.5rem,4vw,2.5rem);font-weight:600;margin-bottom:1rem;color:#ededed}
+        .hero-university{font-size:1.1rem;color:#a3a3a3;margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:0.5rem}
+        .hero-description{font-size:1.1rem;line-height:1.8;max-width:600px;margin:0 auto 3rem;color:#a3a3a3}
+        .highlight-word{color:#00f5ff;font-weight:600;position:relative}
+        .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;font-weight:600;text-decoration:none;border-radius:50px;transition:all 0.3s ease;border:none;cursor:pointer;font-size:1rem}
+        .btn-modern{background:linear-gradient(45deg,#ff6b35,#e63946);color:#fff;position:relative;overflow:hidden}
+        .btn-modern:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(255,107,53,0.3)}
+        .btn-secondary{background:transparent;color:#00f5ff;border:2px solid #00f5ff}
+        .btn-secondary:hover{background:#00f5ff;color:#0a0a0a}
+        .loading-screen{position:fixed;inset:0;background:#0a0a0a;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease}
+        .loading-screen.hidden{opacity:0;pointer-events:none}
+        .loading-content{text-align:center}
+        .loading-logo{font-family:'Orbitron',monospace;font-size:3rem;font-weight:900;background:linear-gradient(45deg,#00f5ff,#bf00ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:2rem}
+        @media(max-width:768px){.nav-menu{display:none}.hamburger{display:flex}.nav-container{padding:0 1rem}.hero-name{font-size:clamp(2rem,10vw,4rem)}.hero-container{padding:0 1rem}.hero-buttons{flex-direction:column;align-items:center}.btn{width:100%;max-width:300px}}
+        @media(max-width:480px){.hero-university{flex-direction:column;gap:0.3rem}.hero-description{font-size:1rem}.btn{padding:0.8rem 1.5rem;font-size:0.9rem}}
+    </style>
+    
+    <!-- CSS Files with Performance Loading -->
+    <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="css/particles.css" media="print" onload="this.media='all'">
+    
+    <noscript>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/animations.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <link rel="stylesheet" href="css/particles.css">
+    </noscript>
     
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="manifest" href="/manifest.json">
     
     <!-- Performance and SEO -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="dns-prefetch" href="//img.icons8.com">
-    <link rel="preload" as="style" href="css/style.css">
+    <link rel="preload" href="assets/images/profile.png" as="image">
+    <link rel="preload" href="assets/images/about.jpg" as="image">
+    <link rel="prefetch" href="assets/images/AIcertified.jpg">
+    <link rel="prefetch" href="assets/images/EnglishCertification.jpeg">
+    <link rel="prefetch" href="assets/images/PLCMechatronicsCertificate.jpg">
     
     <!-- Sitemap and SEO -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -99,6 +154,13 @@
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://img.icons8.com">
     <meta name="format-detection" content="telephone=no">
+    
+    <!-- Resource Hints for JavaScript -->
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="js/theme.js" as="script">
+    <link rel="prefetch" href="js/particles.js">
+    <link rel="prefetch" href="js/animations.js">
+    <link rel="prefetch" href="js/navigation.js">
 </head>
 <body class="dark-theme" itemscope itemtype="https://schema.org/WebPage">
     <!-- Particle Background -->
@@ -109,7 +171,7 @@
         <div class="nav-container">
             <a href="#hero" class="navbar-brand">
                 <div class="brand-image">
-                    <img src="assets/images/profile.png" alt="Kawsar Mahmud Tanveer Khan" />
+                    <img src="assets/images/profile.png" alt="Kawsar Mahmud Tanveer Khan" loading="eager" fetchpriority="high" width="40" height="40" />
                 </div>
                 <span class="logo-text">iTanveer.me</span>
             </a>
@@ -247,7 +309,7 @@
                 <div class="profile-side">
                     <div class="profile-wrapper">
                         <div class="profile-image">
-                            <img src="assets/images/about.jpg" alt="Kawsar Mahmud Tanveer Khan" />
+                            <img src="assets/images/about.jpg" alt="Kawsar Mahmud Tanveer Khan" loading="eager" fetchpriority="high" width="300" height="300" />
                             <div class="image-glow"></div>
                         </div>
                         <div class="profile-badge">
@@ -384,7 +446,7 @@
             <div class="certificates-showcase">
                 <div class="certificate-card" data-certificate="ai">
                     <div class="certificate-image-container">
-                        <img src="assets/images/AIcertified.jpg" alt="AI Certification" class="certificate-image" loading="lazy">
+                        <img src="assets/images/AIcertified.jpg" alt="AI Certification" class="certificate-image" loading="lazy" width="400" height="300">
                         <div class="certificate-overlay">
                             <div class="certificate-glow"></div>
                             <button class="verify-btn" data-cert="ai">
@@ -412,7 +474,7 @@
 
                 <div class="certificate-card" data-certificate="english">
                     <div class="certificate-image-container">
-                        <img src="assets/images/EnglishCertification.jpeg" alt="English Certification" class="certificate-image" loading="lazy">
+                        <img src="assets/images/EnglishCertification.jpeg" alt="English Certification" class="certificate-image" loading="lazy" width="400" height="300">
                         <div class="certificate-overlay">
                             <div class="certificate-glow"></div>
                             <button class="verify-btn" data-cert="english">
@@ -440,7 +502,7 @@
 
                 <div class="certificate-card" data-certificate="plc">
                     <div class="certificate-image-container">
-                        <img src="assets/images/PLCMechatronicsCertificate.jpg" alt="PLC Mechatronics Certificate" class="certificate-image" loading="lazy">
+                        <img src="assets/images/PLCMechatronicsCertificate.jpg" alt="PLC Mechatronics Certificate" class="certificate-image" loading="lazy" width="400" height="300">
                         <div class="certificate-overlay">
                             <div class="certificate-glow"></div>
                             <button class="verify-btn" data-cert="plc">
@@ -480,7 +542,7 @@
             <div class="skills-showcase">
                 <div class="skill-card" data-category="office">
                     <div class="skill-icon">
-                        <img src="https://img.icons8.com/color/48/000000/ms-word.png" alt="MS Word" loading="lazy">
+                        <img src="https://img.icons8.com/color/48/000000/ms-word.png" alt="MS Word" loading="lazy" width="48" height="48">
                     </div>
                     <h3>MS Word</h3>
                     <div class="skill-glow"></div>
@@ -488,7 +550,7 @@
                 
                 <div class="skill-card" data-category="office">
                     <div class="skill-icon">
-                        <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt="MS Excel" loading="lazy">
+                        <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt="MS Excel" loading="lazy" width="48" height="48">
                     </div>
                     <h3>MS Excel</h3>
                     <div class="skill-glow"></div>
@@ -496,7 +558,7 @@
                 
                 <div class="skill-card" data-category="office">
                     <div class="skill-icon">
-                        <img src="https://img.icons8.com/color/48/000000/ms-powerpoint.png" alt="MS PowerPoint" loading="lazy">
+                        <img src="https://img.icons8.com/color/48/000000/ms-powerpoint.png" alt="MS PowerPoint" loading="lazy" width="48" height="48">
                     </div>
                     <h3>MS PowerPoint</h3>
                     <div class="skill-glow"></div>
@@ -1052,11 +1114,26 @@
         </div>
     </div>
 
-    <!-- JavaScript Files -->
-    <script src="js/particles.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/main.js"></script>
+    <!-- JavaScript Files - Performance Optimized -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/particles.js" async></script>
+    <script src="js/animations.js" async></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('SW registered with scope: ', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('SW registration failed: ', error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>

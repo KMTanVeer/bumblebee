@@ -12,6 +12,7 @@ class AnimationController {
 
   init() {
     this.setupScrollAnimations();
+    this.setupTimelineAnimations();
     this.setupTypingAnimations();
     this.setupProgressBars();
     this.setupStaggerAnimations();
@@ -40,14 +41,13 @@ class AnimationController {
       });
     }, observerOptions);
 
-    // Observe all scroll-animated elements
+    // Observe all scroll-animated elements (excluding timeline items)
     const scrollElements = document.querySelectorAll([
       '.scroll-animate',
       '.scroll-fade',
       '.scroll-slide-left',
       '.scroll-slide-right',
       '.scroll-scale',
-      '.timeline-item',
       '.project-card',
       '.skill-category'
     ].join(','));
@@ -74,6 +74,45 @@ class AnimationController {
     if (element.classList.contains('stagger-container')) {
       this.animateStaggerChildren(element);
     }
+  }
+
+  // ========================================
+  // Timeline Scroll Reveal Animations
+  // ========================================
+  
+  setupTimelineAnimations() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    if (timelineItems.length === 0) return;
+
+    // Create dedicated observer for timeline with perfect settings
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Get the index of the timeline item for stagger effect
+          const allTimelineItems = Array.from(document.querySelectorAll('.timeline-item'));
+          const itemIndex = allTimelineItems.indexOf(entry.target);
+          
+          // Add staggered animation with delay
+          setTimeout(() => {
+            entry.target.classList.add('animate');
+          }, itemIndex * 150); // 150ms stagger between items
+          
+          // Unobserve after animation to prevent re-triggering
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15, // Trigger when 15% of element is visible
+      rootMargin: '-20px 0px -20px 0px' // Small margin for better timing
+    });
+
+    // Observe each timeline item
+    timelineItems.forEach(item => {
+      timelineObserver.observe(item);
+    });
+
+    this.observers.set('timeline', timelineObserver);
   }
 
   // ========================================
