@@ -119,7 +119,13 @@
         @media(max-width:480px){.hero-university{flex-direction:column;gap:0.3rem}.hero-description{font-size:1rem}.btn{padding:0.8rem 1.5rem;font-size:0.9rem}}
     </style>
     
-    <!-- CSS Files with Performance Loading -->
+    <!-- CSS Files - Direct Loading for Reliability -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/particles.css">
+    
+    <!-- Performance Optimized Loading (Backup) -->
     <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
