@@ -534,6 +534,9 @@
             <button class="nav-btn" onclick="history.back()">
                 <span>↶ Go Back</span>
             </button>
+            <button class="nav-btn try-again-btn" id="tryAgainBtn">
+                <span>🔄 Try Again</span>
+            </button>
         </div>
     </div>
 
@@ -543,6 +546,81 @@
     </div>
 
     <script>
+        // --- Robot Eye Tracking & Color Interactivity ---
+        const robot = document.querySelector('.robot');
+        const leftEye = document.querySelector('.robot-eye.left');
+        const rightEye = document.querySelector('.robot-eye.right');
+        let eyeColor = 'var(--accent-cyan)';
+        document.addEventListener('mousemove', (e) => {
+            const rect = robot.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const dx = e.clientX - centerX;
+            const dy = e.clientY - centerY;
+            const angle = Math.atan2(dy, dx);
+            const dist = Math.min(18, Math.hypot(dx, dy) / 10);
+            const x = Math.cos(angle) * dist;
+            const y = Math.sin(angle) * dist;
+            leftEye.style.transform = `translate(${x}px, ${y}px)`;
+            rightEye.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        robot.addEventListener('mouseenter', () => {
+            eyeColor = '#ff6b35';
+            leftEye.style.background = eyeColor;
+            rightEye.style.background = eyeColor;
+            leftEye.style.boxShadow = `0 0 16px ${eyeColor}`;
+            rightEye.style.boxShadow = `0 0 16px ${eyeColor}`;
+        });
+        robot.addEventListener('mouseleave', () => {
+            eyeColor = 'var(--accent-cyan)';
+            leftEye.style.background = eyeColor;
+            rightEye.style.background = eyeColor;
+            leftEye.style.boxShadow = `0 0 10px ${eyeColor}`;
+            rightEye.style.boxShadow = `0 0 10px ${eyeColor}`;
+        });
+        robot.addEventListener('click', () => {
+            eyeColor = '#1dd3b0';
+            leftEye.style.background = eyeColor;
+            rightEye.style.background = eyeColor;
+            leftEye.style.boxShadow = `0 0 24px ${eyeColor}`;
+            rightEye.style.boxShadow = `0 0 24px ${eyeColor}`;
+            setTimeout(() => {
+                eyeColor = 'var(--accent-cyan)';
+                leftEye.style.background = eyeColor;
+                rightEye.style.background = eyeColor;
+                leftEye.style.boxShadow = `0 0 10px ${eyeColor}`;
+                rightEye.style.boxShadow = `0 0 10px ${eyeColor}`;
+            }, 600);
+        });
+
+        // --- Try Again Button Animation ---
+        const tryAgainBtn = document.getElementById('tryAgainBtn');
+        if (tryAgainBtn) {
+            tryAgainBtn.addEventListener('click', function() {
+                tryAgainBtn.classList.add('spin-animate');
+                setTimeout(() => {
+                    tryAgainBtn.classList.remove('spin-animate');
+                    location.reload();
+                }, 900);
+            });
+        }
+
+        // --- Parallax Background ---
+        const cosmicBg = document.querySelector('.cosmic-background');
+        const stars = document.querySelectorAll('.star');
+        const shapes = document.querySelectorAll('.shape');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            stars.forEach((star, i) => {
+                const depth = 1 + (i % 3);
+                star.style.transform = `translate(${x * 10 * depth}px, ${y * 10 * depth}px)`;
+            });
+            shapes.forEach((shape, i) => {
+                const depth = 1 + (i % 2);
+                shape.style.transform = `translate(${x * 30 * depth}px, ${y * 30 * depth}px)`;
+            });
+        });
         // Console Easter Egg
         console.log(`
         ╔══════════════════════════════════════════════╗
@@ -596,8 +674,9 @@
             }, Math.random() * 10000 + 5000);
         };
 
-        // Add some hover effects to the robot
-        document.querySelector('.robot').addEventListener('mouseenter', () => {
+
+        // Add some hover effects to the robot (console only)
+        robot.addEventListener('mouseenter', () => {
             console.log("🤖 BEEP! Someone's hovering over me!");
         });
 
@@ -635,5 +714,16 @@
             }
         }, 10000);
     </script>
+    <style>
+    /* Try Again Button Animation */
+    .try-again-btn.spin-animate {
+        animation: trySpin 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    @keyframes trySpin {
+        0% { transform: scale(1) rotate(0deg); }
+        60% { transform: scale(1.2) rotate(360deg); }
+        100% { transform: scale(1) rotate(720deg); }
+    }
+    </style>
 </body>
 </html>
