@@ -84,56 +84,50 @@ class AnimationController {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     if (timelineItems.length === 0) {
-      console.log('No timeline items found - timeline container may not be loaded yet');
+      console.log('No timeline items found');
       return;
     }
 
-    console.log(`Setting up reveal animations for ${timelineItems.length} timeline items`);
+    console.log(`Setting up smooth animations for ${timelineItems.length} timeline items`);
 
-    // Create intersection observer for smooth reveal animations
+  // No direction needed, handled by CSS nth-child
+
+    // Simple intersection observer
     const timelineObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Get the index of the timeline item for stagger effect
           const allTimelineItems = Array.from(document.querySelectorAll('.timeline-item'));
           const itemIndex = allTimelineItems.indexOf(entry.target);
           
-          console.log(`Timeline item ${itemIndex + 1} is now visible, triggering animation`);
+          console.log(`Timeline item ${itemIndex + 1} visible, animating`);
           
-          // Add staggered reveal animation with delay
+          // Gentle staggered animation
           setTimeout(() => {
-            // Use requestAnimationFrame for better performance
-            requestAnimationFrame(() => {
-              entry.target.classList.add('animate');
-              console.log(`Timeline item ${itemIndex + 1} revealed with slide animation`);
-            });
-          }, itemIndex * 200); // Reduced stagger for quicker reveals
+            entry.target.classList.add('animate');
+          }, itemIndex * 180);
           
-          // Unobserve after animation to prevent re-triggering
           timelineObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1, // Trigger when 10% of element is visible for earlier animation
-      rootMargin: '50px 0px -20px 0px' // Start animation earlier
+      threshold: 0.1,
+      rootMargin: '50px 0px -20px 0px'
     });
 
-    // Start observing all timeline items
+    // Observe all timeline items
     timelineItems.forEach((item, index) => {
       timelineObserver.observe(item);
-      console.log(`Timeline item ${index + 1} ready for reveal animation`);
     });
 
-    // Add manual trigger for items already in view
+    // Handle items already in view
     setTimeout(() => {
       timelineItems.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          console.log(`Timeline item ${index + 1} already in view, triggering immediately`);
           item.classList.add('animate');
         }
       });
-    }, 500);
+    }, 300);
 
     this.observers.set('timeline', timelineObserver);
   }
