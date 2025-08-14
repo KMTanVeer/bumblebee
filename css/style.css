@@ -1,3 +1,4 @@
+@import url('preloader-rounded.css');
 /* ========================================
    Global Text Rendering & Anti-Blur
 ======================================== */
@@ -6191,17 +6192,7 @@ input[type="button"],
   text-align: center;
 }
 
-.loading-logo {
-  font-family: var(--font-cyber);
-  font-size: 4rem;
-  font-weight: 900;
-  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 2rem;
-  animation: pulse 2s infinite;
-}
+
 
 .loading-bar {
   width: 300px;

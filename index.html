@@ -35,42 +35,49 @@
     <meta name="application-name" content="iTanveer Portfolio">
     <link rel="canonical" href="https://itanveer.me/">
     
-    <!-- Structured Data - JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Kawsar Mahmud Tanveer Khan",
-      "jobTitle": "Electrical Engineering Student",
-      "description": "BSc in EEE at Daffodil International University specializing in electrical systems and innovative technologies",
-      "url": "https://itanveer.me",
-      "image": "https://itanveer.me/assets/images/profile.png",
-      "sameAs": [
-        "https://linkedin.com/in/kawsarTanveer"
-      ],
-      "worksFor": {
-        "@type": "EducationalOrganization",
-        "name": "Daffodil International University",
-        "url": "https://daffodilvarsity.edu.bd"
-      },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Daffodil International University"
-      },
-      "knowsAbout": [
-        "Electrical Engineering",
-        "MATLAB",
-        "Python Programming",
-        "AutoCAD",
-        "Circuit Design",
-        "Engineering Solutions"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "Bangladesh"
-      }
-    }
-    </script>
+        <!-- Improved Structured Data - JSON-LD for About Section -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Kawsar Mahmud Tanveer Khan",
+            "alternateName": "@itzzVeer",
+            "jobTitle": "Electrical & Electronic Engineering Student",
+            "description": "A passionate Electrical and Electronic Engineering student at Daffodil International University. Specializing in embedded systems, IoT, IT-related technologies, and real-world problem solving.",
+            "url": "https://itanveer.me",
+            "image": "https://itanveer.me/assets/images/about.jpg",
+            "sameAs": [
+                "https://linkedin.com/in/KawsarTanveer",
+                "https://github.com/KMTanveer",
+                "https://facebook.com/itzzveer",
+                "https://instagram.com/itzzveer"
+            ],
+            "worksFor": {
+                "@type": "EducationalOrganization",
+                "name": "Daffodil International University",
+                "url": "https://daffodilvarsity.edu.bd"
+            },
+            "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "Daffodil International University"
+            },
+            "knowsAbout": [
+                "Electrical Engineering",
+                "Embedded Systems",
+                "IoT",
+                "IT Technologies",
+                "MATLAB",
+                "Python Programming",
+                "AutoCAD",
+                "Circuit Design",
+                "Engineering Solutions"
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "Bangladesh"
+            }
+        }
+        </script>
     
     <!-- Fonts with Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -301,39 +308,36 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" itemscope itemtype="https://schema.org/Person">
             <!-- Section Title -->
             <div class="section-header">
                 <h2 class="section-title">
                     About <span class="highlight">Me</span>
                 </h2>
             </div>
-            
             <!-- Main Content Card -->
             <div class="about-card">
                 <!-- Profile Side -->
                 <div class="profile-side">
                     <div class="profile-wrapper">
                         <div class="profile-image">
-                            <img src="assets/images/about.jpg" alt="Kawsar Mahmud Tanveer Khan" loading="eager" fetchpriority="high" width="300" height="300" />
+                            <img src="assets/images/about.jpg" alt="Kawsar Mahmud Tanveer Khan - Electrical & Electronic Engineering Student" loading="eager" fetchpriority="high" width="300" height="300" itemprop="image" />
                             <div class="image-glow"></div>
                         </div>
                         <div class="profile-badge">
                             <span class="badge-icon">⚡</span>
-                            <span class="badge-text">@itzzVeer</span>
+                            <span class="badge-text" itemprop="alternateName">@itzzVeer</span>
                         </div>
                     </div>
                 </div>
-                
                 <!-- Content Side -->
                 <div class="content-side">
                     <div class="intro-text">
-                        <h3 class="name-title">Kawsar Mahmud Tanveer Khan</h3>
-                        <p class="role-subtitle">Electrical & Electronic Engineering Student</p>
-                        <p class="university-info">Daffodil International University</p>
+                        <h3 class="name-title" itemprop="name">Kawsar Mahmud Tanveer Khan</h3>
+                        <p class="role-subtitle" itemprop="jobTitle">Electrical & Electronic Engineering Student</p>
+                        <p class="university-info" itemprop="alumniOf">Daffodil International University</p>
                     </div>
-                    
-                    <div class="about-description">
+                    <div class="about-description" itemprop="description">
                         <p style="font-size: 0.9rem; line-height: 1.5;">
                             A passionate Electrical and Electronic Engineering student at Daffodil International University. 
                             I specialize in <span class="highlight-word">embedded systems</span>, 
@@ -346,7 +350,6 @@
                             and building meaningful projects. <span class="highlight-word">Let's build the future together!</span>
                         </p>
                     </div>
-                    
                     <!-- Core Values -->
                     <div class="core-values">
                         <div class="value-item">
@@ -371,7 +374,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <!-- Expertise Tags -->
                     <div class="expertise-tags">
                         <span class="tag">Embedded Systems</span>
@@ -1115,7 +1117,9 @@
             <div class="loading-logo">@itzzVeer</div>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
+                <div class="loading-bar-light"></div>
             </div>
+            <div class="preloader-flash" style="display:none;"></div>
             <p class="loading-text">Initializing Portfolio...</p>
         </div>
     </div>

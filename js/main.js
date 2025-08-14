@@ -320,16 +320,36 @@ class PortfolioApp {
 
   animateLoadingProgress() {
     const progressBar = document.querySelector('.loading-progress');
-    if (!progressBar) return;
+    const barLight = document.querySelector('.loading-bar-light');
+    if (!progressBar || !barLight) return;
 
     let progress = 0;
+    const barWidth = 300; // px, matches CSS
     const interval = setInterval(() => {
       progress += Math.random() * 15;
       if (progress >= 100) {
         progress = 100;
         clearInterval(interval);
+        // Boom flash effect
+        const flash = document.querySelector('.preloader-flash');
+        if (flash) {
+          flash.style.display = 'block';
+          flash.style.opacity = '1';
+          flash.classList.remove('hide');
+          flash.classList.add('show');
+          flash.style.animation = 'preloader-boom 0.5s cubic-bezier(0.4,0,0.2,1) forwards';
+          setTimeout(() => {
+            flash.style.display = 'none';
+            flash.style.opacity = '0';
+            flash.classList.remove('show');
+          }, 500);
+        }
       }
       progressBar.style.width = progress + '%';
+      // Move the light to the end of the progress
+      const left = Math.max(0, Math.min(barWidth * (progress / 100) - 12, barWidth - 24));
+      barLight.style.left = left + 'px';
+      barLight.style.opacity = progress > 2 && progress < 100 ? '1' : '0';
     }, 150);
   }
 
