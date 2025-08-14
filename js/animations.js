@@ -84,7 +84,7 @@ class AnimationController {
     const timelineItems = document.querySelectorAll('.timeline-item');
     
     if (timelineItems.length === 0) {
-      console.log('No timeline items found');
+      console.log('No timeline items found - timeline container may not be loaded yet');
       return;
     }
 
@@ -98,6 +98,8 @@ class AnimationController {
           const allTimelineItems = Array.from(document.querySelectorAll('.timeline-item'));
           const itemIndex = allTimelineItems.indexOf(entry.target);
           
+          console.log(`Timeline item ${itemIndex + 1} is now visible, triggering animation`);
+          
           // Add staggered reveal animation with delay
           setTimeout(() => {
             // Use requestAnimationFrame for better performance
@@ -105,15 +107,15 @@ class AnimationController {
               entry.target.classList.add('animate');
               console.log(`Timeline item ${itemIndex + 1} revealed with slide animation`);
             });
-          }, itemIndex * 300); // 300ms stagger for better visual effect
+          }, itemIndex * 200); // Reduced stagger for quicker reveals
           
           // Unobserve after animation to prevent re-triggering
           timelineObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.15, // Trigger when 15% of element is visible
-      rootMargin: '0px 0px -50px 0px' // Start animation before fully in view
+      threshold: 0.1, // Trigger when 10% of element is visible for earlier animation
+      rootMargin: '50px 0px -20px 0px' // Start animation earlier
     });
 
     // Start observing all timeline items
@@ -121,6 +123,17 @@ class AnimationController {
       timelineObserver.observe(item);
       console.log(`Timeline item ${index + 1} ready for reveal animation`);
     });
+
+    // Add manual trigger for items already in view
+    setTimeout(() => {
+      timelineItems.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          console.log(`Timeline item ${index + 1} already in view, triggering immediately`);
+          item.classList.add('animate');
+        }
+      });
+    }, 500);
 
     this.observers.set('timeline', timelineObserver);
   }
