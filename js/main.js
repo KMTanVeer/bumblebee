@@ -1636,6 +1636,11 @@ class CertificateVerification {
 
     document.body.appendChild(modal);
     
+    // Rebind special cursor effects for new modal buttons
+    if (window.modernCursorEffect) {
+      window.modernCursorEffect.bindSpecialButtons();
+    }
+    
     // Add advanced entrance animation
     requestAnimationFrame(() => {
       modal.style.opacity = '1';
@@ -2895,6 +2900,7 @@ let skillCardEffects;
 let certificateVerification;
 let geometricWaveCursor;
 let futuristicHoverEffects;
+let modernCursorEffect;
 
 document.addEventListener('DOMContentLoaded', () => {
   cursorWaveEffect = new CursorWaveEffect();
@@ -2904,6 +2910,10 @@ document.addEventListener('DOMContentLoaded', () => {
   certificateVerification = new CertificateVerification();
   geometricWaveCursor = new GeometricWaveCursor();
   futuristicHoverEffects = new FuturisticHoverEffects();
+  modernCursorEffect = new ModernCursorEffect();
+  
+  // Make modernCursorEffect globally available
+  window.modernCursorEffect = modernCursorEffect;
 });
 
 // ========================================
@@ -3317,6 +3327,357 @@ function redirectToPortfolio() {
 }
 
 // Export for use in other modules
+// Modern Cursor Effect for Light Mode Only
+class ModernCursorEffect {
+  constructor() {
+    this.cursor = null;
+    this.trails = [];
+    this.maxTrails = 12;
+    this.mouse = { x: 0, y: 0 };
+    this.isDarkMode = false;
+    this.particles = [];
+    this.colors = {
+      dark: ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff'],
+      light: ['#667eea', '#764ba2', '#f093fb', '#f5576c']
+    };
+    
+    this.init();
+  }
+
+  init() {
+    this.checkTheme();
+    this.createCursor();
+    this.bindEvents();
+    this.setupMutationObserver();
+    
+    // Listen for theme changes
+    document.addEventListener('themeChange', () => {
+      this.handleThemeChange();
+    });
+  }
+
+  setupMutationObserver() {
+    // Watch for new elements being added to the DOM
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          // Check if any modal or verification elements were added
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) { // Element node
+              const hasVerificationElements = node.classList?.contains('verification-modal') ||
+                                            node.querySelector?.('.verify-online-btn, button[onclick*="window.open"], a[target="_blank"]');
+              
+              if (hasVerificationElements) {
+                setTimeout(() => this.bindSpecialButtons(), 50);
+              }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  checkTheme() {
+    this.isDarkMode = !document.body.classList.contains('light-theme');
+  }
+
+  handleThemeChange() {
+    this.checkTheme();
+    this.updateCursorStyle();
+  }
+
+  createCursor() {
+    if (this.cursor) return;
+    
+    // Create main cursor
+    this.cursor = document.createElement('div');
+    this.cursor.className = 'modern-cursor';
+    document.body.appendChild(this.cursor);
+    this.updateCursorStyle();
+  }
+
+  updateCursorStyle() {
+    if (!this.cursor) return;
+    
+    if (this.isDarkMode) {
+      this.cursor.classList.add('dark-mode');
+      this.cursor.classList.remove('light-mode');
+    } else {
+      this.cursor.classList.add('light-mode');
+      this.cursor.classList.remove('dark-mode');
+    }
+  }
+
+  removeCursor() {
+    if (this.cursor) {
+      this.cursor.remove();
+      this.cursor = null;
+    }
+    
+    // Remove all trails and particles
+    this.trails.forEach(trail => trail.element.remove());
+    this.trails = [];
+    this.particles.forEach(particle => particle.element.remove());
+    this.particles = [];
+  }
+
+  bindEvents() {
+    document.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+    document.addEventListener('mousedown', () => this.handleMouseDown());
+    document.addEventListener('mouseup', () => this.handleMouseUp());
+    
+    // Add hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-card, .timeline-content');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => this.handleHoverStart(el));
+      el.addEventListener('mouseleave', () => this.handleHoverEnd(el));
+    });
+    
+    // Special handling for verification and external link buttons
+    this.bindSpecialButtons();
+  }
+
+  bindSpecialButtons() {
+    // Re-bind when new elements are added (like modals)
+    setTimeout(() => {
+      const specialButtons = document.querySelectorAll('.verify-online-btn, button[onclick*="window.open"], a[target="_blank"]');
+      specialButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => this.handleSpecialHover(btn));
+        btn.addEventListener('mouseleave', () => this.handleSpecialLeave(btn));
+      });
+    }, 100);
+  }
+
+  handleSpecialHover(element) {
+    // Create a visible colored cursor for special buttons
+    if (this.cursor) {
+      this.cursor.style.width = '15px';
+      this.cursor.style.height = '15px';
+      this.cursor.style.border = this.isDarkMode ? '2px solid #00f5ff' : '2px solid #3b82f6';
+      this.cursor.style.background = this.isDarkMode 
+        ? 'rgba(0, 245, 255, 0.3)' 
+        : 'rgba(59, 130, 246, 0.3)';
+      this.cursor.style.boxShadow = this.isDarkMode
+        ? '0 0 20px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.4)'
+        : '0 0 15px rgba(59, 130, 246, 0.6)';
+    }
+  }
+
+  handleSpecialLeave(element) {
+    // Hide the cursor again
+    if (this.cursor) {
+      this.cursor.style.width = '0px';
+      this.cursor.style.height = '0px';
+      this.cursor.style.border = 'none';
+      this.cursor.style.background = 'transparent';
+      this.cursor.style.boxShadow = 'none';
+    }
+  }
+
+  handleMouseMove(e) {
+    if (!this.cursor) return;
+    
+    this.mouse.x = e.clientX;
+    this.mouse.y = e.clientY;
+    
+    // Update cursor position
+    this.cursor.style.left = this.mouse.x + 'px';
+    this.cursor.style.top = this.mouse.y + 'px';
+    
+    // Create different effects for different themes
+    if (this.isDarkMode) {
+      this.createColorfulTrail();
+      if (Math.random() < 0.3) {
+        this.createSparkle();
+      }
+    } else {
+      this.createSimpleTrail();
+      if (Math.random() < 0.2) {
+        this.createLightSparkle();
+      }
+    }
+  }
+
+  createSimpleTrail() {
+    const colors = this.colors.light;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail light-trail';
+    trail.style.left = this.mouse.x + 'px';
+    trail.style.top = this.mouse.y + 'px';
+    
+    // Override the CSS gradient with random colors
+    trail.style.background = `radial-gradient(circle, ${color}, ${color}80)`;
+    trail.style.boxShadow = `0 0 15px ${color}80, 0 0 30px ${color}40`;
+    
+    document.body.appendChild(trail);
+    
+    this.trails.push({
+      element: trail,
+      life: 1
+    });
+    
+    // Remove oldest trails
+    if (this.trails.length > this.maxTrails) {
+      const oldTrail = this.trails.shift();
+      oldTrail.element.remove();
+    }
+    
+    // Animate trail - let CSS animation handle the effect
+    setTimeout(() => {
+      if (trail.parentNode) {
+        trail.remove();
+      }
+      this.removeFromArray(this.trails, trail);
+    }, 600);
+  }
+
+  createColorfulTrail() {
+    const colors = this.colors.dark;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    const trail = document.createElement('div');
+    trail.className = 'cursor-trail dark-trail';
+    trail.style.left = this.mouse.x + 'px';
+    trail.style.top = this.mouse.y + 'px';
+    trail.style.background = color;
+    trail.style.boxShadow = `0 0 20px ${color}, 0 0 40px ${color}`;
+    
+    document.body.appendChild(trail);
+    
+    this.trails.push({
+      element: trail,
+      life: 1,
+      color: color
+    });
+    
+    // Remove oldest trails
+    if (this.trails.length > this.maxTrails) {
+      const oldTrail = this.trails.shift();
+      oldTrail.element.remove();
+    }
+    
+    // Animate colorful trail
+    requestAnimationFrame(() => {
+      trail.style.opacity = '0';
+      trail.style.transform = 'translate(-50%, -50%) scale(0.1)';
+      
+      setTimeout(() => {
+        if (trail.parentNode) {
+          trail.remove();
+        }
+        this.removeFromArray(this.trails, trail);
+      }, 800);
+    });
+  }
+
+  createSparkle() {
+    const colors = this.colors.dark;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    const sparkle = document.createElement('div');
+    sparkle.className = 'cursor-sparkle';
+    sparkle.style.left = (this.mouse.x + (Math.random() - 0.5) * 60) + 'px';
+    sparkle.style.top = (this.mouse.y + (Math.random() - 0.5) * 60) + 'px';
+    sparkle.style.background = color;
+    sparkle.style.boxShadow = `0 0 15px ${color}`;
+    
+    document.body.appendChild(sparkle);
+    
+    this.particles.push({
+      element: sparkle,
+      life: 1
+    });
+    
+    // Animate sparkle
+    requestAnimationFrame(() => {
+      sparkle.style.opacity = '0';
+      sparkle.style.transform = 'translate(-50%, -50%) scale(0) rotate(180deg)';
+      
+      setTimeout(() => {
+        if (sparkle.parentNode) {
+          sparkle.remove();
+        }
+        this.removeFromArray(this.particles, sparkle);
+      }, 1000);
+    });
+  }
+
+  createLightSparkle() {
+    const colors = this.colors.light;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    const sparkle = document.createElement('div');
+    sparkle.className = 'cursor-sparkle light-sparkle';
+    sparkle.style.left = (this.mouse.x + (Math.random() - 0.5) * 40) + 'px';
+    sparkle.style.top = (this.mouse.y + (Math.random() - 0.5) * 40) + 'px';
+    sparkle.style.background = color;
+    sparkle.style.boxShadow = `0 0 10px ${color}80`;
+    sparkle.style.width = '4px';
+    sparkle.style.height = '4px';
+    
+    document.body.appendChild(sparkle);
+    
+    this.particles.push({
+      element: sparkle,
+      life: 1
+    });
+    
+    // Animate light sparkle with gentler animation
+    requestAnimationFrame(() => {
+      sparkle.style.opacity = '0';
+      sparkle.style.transform = 'translate(-50%, -50%) scale(0) rotate(90deg)';
+      
+      setTimeout(() => {
+        if (sparkle.parentNode) {
+          sparkle.remove();
+        }
+        this.removeFromArray(this.particles, sparkle);
+      }, 800);
+    });
+  }
+
+  removeFromArray(array, element) {
+    const index = array.findIndex(item => item.element === element);
+    if (index > -1) {
+      array.splice(index, 1);
+    }
+  }
+
+  handleMouseDown() {
+    if (!this.cursor) return;
+    this.cursor.classList.add('active');
+    
+    if (this.isDarkMode) {
+      // Create burst effect for dark mode
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => this.createSparkle(), i * 50);
+      }
+    }
+  }
+
+  handleMouseUp() {
+    if (!this.cursor) return;
+    this.cursor.classList.remove('active');
+  }
+
+  handleHoverStart() {
+    if (!this.cursor) return;
+    this.cursor.classList.add('active');
+  }
+
+  handleHoverEnd() {
+    if (!this.cursor) return;
+    this.cursor.classList.remove('active');
+  }
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { 
     PortfolioApp, 
@@ -3326,6 +3687,7 @@ if (typeof module !== 'undefined' && module.exports) {
     SkillCardEffects,
     CertificateVerification,
     redirectToPortfolio,
-    redirectToLinkedIn
+    redirectToLinkedIn,
+    ModernCursorEffect
   };
 }

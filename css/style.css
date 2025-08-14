@@ -127,6 +127,8 @@ body::before {
   animation: geometricWaves 12s ease-in-out infinite;
   z-index: -3;
   pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 body::after {
@@ -145,6 +147,8 @@ body::after {
   animation: geometricFlow 25s linear infinite, waveMotion 8s ease-in-out infinite;
   z-index: -2;
   pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Additional layer for depth */
@@ -161,6 +165,8 @@ body::after {
   animation: pulsingGradients 18s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 @keyframes geometricWaves {
@@ -295,6 +301,7 @@ body.light-theme {
 section {
   padding: var(--section-padding);
   position: relative;
+  contain: layout style;
 }
 
 .section-header {
@@ -342,6 +349,8 @@ body.light-theme .section-title .highlight {
   background: rgba(10, 10, 10, 0.1);
   border-bottom: 1px solid rgba(0, 245, 255, 0.1);
   transform: translateY(0);
+  will-change: transform, background-color, box-shadow;
+  backface-visibility: hidden;
 }
 
 .navbar.scrolled {
@@ -388,6 +397,8 @@ body.light-theme .section-title .highlight {
   gap: 0.75rem;
   text-decoration: none;
   transition: transform var(--transition-normal);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .navbar-brand:hover {
@@ -1478,7 +1489,7 @@ body.light-theme .section-title .highlight {
 
 .btn-modern:hover .btn-text {
   color: #1a1a1a;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   transform: translateX(-2px);
 }
 
@@ -1486,7 +1497,7 @@ body.light-theme .section-title .highlight {
   opacity: 1;
   color: #1a1a1a;
   transform: translateX(4px) translateY(-2px) rotate(-10deg);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .btn-modern:hover .sparkle {
@@ -2056,8 +2067,9 @@ body.light-theme .section-title .highlight {
   }
   
   .intro-text {
-    margin: 0 auto;
+    width: 100%;
     max-width: 100%;
+    margin: 0 auto;
     text-align: center;
     padding-bottom: 1rem;
   }
@@ -2129,7 +2141,6 @@ body.light-theme .section-title .highlight {
   
   .value-content h4 {
     font-size: 0.85rem;
-    margin-bottom: 0.3rem;
   }
   
   .value-content p {
@@ -2245,12 +2256,11 @@ body.light-theme .section-title .highlight {
   }
   
   .core-values {
-    gap: 0.5rem;
-    margin: 1rem 0;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin: 1.5rem auto;
     max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+    width: 100%;
   }
   
   .value-item {
@@ -2434,6 +2444,7 @@ body.light-theme .section-title .highlight {
   .intro-text {
     padding-bottom: 1rem;
   }
+  
   
   /* Better spacing for mobile */
   .content-side {
@@ -2654,6 +2665,426 @@ body.light-theme .btn-modern:active {
 
 body.light-theme .btn-modern .btn-text {
   color: white;
+}
+
+/* Light Theme for Timeline Section */
+body.light-theme .timeline-content {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .timeline-content:hover {
+  border-color: #0066cc;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+}
+
+body.light-theme .timeline-content h3 {
+  color: #1f2937;
+}
+
+body.light-theme .timeline-content p {
+  color: #4b5563;
+}
+
+body.light-theme .timeline-dot {
+  background: white;
+  border: 3px solid #0066cc;
+}
+
+body.light-theme .timeline-line {
+  background: #d1d5db;
+}
+
+/* Light Theme for Skills Section */
+body.light-theme .skill-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .skill-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+}
+
+body.light-theme .skill-card h3 {
+  color: #1f2937;
+}
+
+/* Light Theme for Projects Section */
+body.light-theme .project-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .project-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+}
+
+body.light-theme .project-card h3 {
+  color: #1f2937;
+}
+
+body.light-theme .project-card p {
+  color: #4b5563;
+}
+
+body.light-theme .project-tech {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+/* Light Theme for Education Section */
+body.light-theme .education-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .education-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+}
+
+body.light-theme .education-card h3 {
+  color: #1f2937;
+}
+
+body.light-theme .education-card p {
+  color: #4b5563;
+}
+
+/* Light Theme for Contact Section */
+body.light-theme .contact-form {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .form-group input,
+body.light-theme .form-group textarea {
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  color: #1f2937;
+}
+
+body.light-theme .form-group input:focus,
+body.light-theme .form-group textarea:focus {
+  border-color: #0066cc;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+body.light-theme .form-group label {
+  color: #374151;
+}
+
+body.light-theme .contact-info-item {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .contact-info-item:hover {
+  border-color: #0066cc;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.12);
+}
+
+body.light-theme .contact-info-item h4 {
+  color: #1f2937;
+}
+
+body.light-theme .contact-info-item p {
+  color: #4b5563;
+}
+
+/* Light Theme for Certificate Section */
+body.light-theme .certificate-card {
+  background: white;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .certificate-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+}
+
+body.light-theme .certificate-card h3 {
+  color: #1f2937;
+}
+
+body.light-theme .certificate-card p {
+  color: #4b5563;
+}
+
+/* Light Theme for Navigation */
+body.light-theme .navbar {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+body.light-theme .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .nav-link {
+  color: #1f2937;
+}
+
+body.light-theme .nav-link:hover {
+  color: #0066cc;
+}
+
+body.light-theme .nav-link.active {
+  color: #0066cc;
+}
+
+body.light-theme .brand-text {
+  color: #1f2937;
+}
+
+/* Light Theme for Footer */
+body.light-theme footer {
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+body.light-theme .footer-content p {
+  color: #6b7280;
+}
+
+body.light-theme .social-links a {
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+}
+
+body.light-theme .social-links a:hover {
+  color: #0066cc;
+  border-color: #0066cc;
+  background: #f3f4f6;
+}
+
+/* Light Theme for Theme Toggle */
+body.light-theme .theme-toggle {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+body.light-theme .theme-toggle:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+body.light-theme .theme-toggle span {
+  color: #1f2937;
+}
+
+/* Modern Colorful Cursor Effects */
+body {
+  cursor: none; /* Hide default cursor for both themes */
+}
+
+/* Special class to restore cursor when needed */
+.show-cursor,
+.show-cursor * {
+  cursor: auto !important;
+}
+
+/* Restore cursor for specific verification elements */
+.verification-modal,
+.verification-modal *,
+.verify-online-btn,
+.verify-online-btn *,
+button[onclick*="window.open"],
+button[onclick*="window.open"] *,
+a[target="_blank"],
+a[target="_blank"] * {
+  cursor: pointer !important;
+}
+
+/* Restore cursor for form elements */
+input, textarea, select, button {
+  cursor: auto !important;
+}
+
+input[type="text"], 
+input[type="email"], 
+textarea {
+  cursor: text !important;
+}
+
+button, 
+input[type="submit"], 
+input[type="button"],
+.btn {
+  cursor: pointer !important;
+}
+
+/* Dark Mode Cursor - Only Effects, No Main Circle */
+.modern-cursor.dark-mode {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  border: none;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  /* Hide the main cursor circle completely in dark mode */
+}
+
+.modern-cursor.dark-mode.active {
+  width: 0px;
+  height: 0px;
+  border: none;
+  background: transparent;
+  /* Keep it hidden even when active */
+}
+
+/* Dark Mode Trail Effects */
+.cursor-trail.dark-trail {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: trailPulse 0.8s ease-out;
+}
+
+@keyframes trailPulse {
+  0% { 
+    opacity: 0.9; 
+    transform: translate(-50%, -50%) scale(1.2) rotate(0deg); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.1) rotate(180deg); 
+  }
+}
+
+/* Dark Mode Sparkles */
+.cursor-sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: sparkleFloat 1s ease-out;
+}
+
+@keyframes sparkleFloat {
+  0% { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: translate(-50%, -50%) scale(1.5) rotate(90deg); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0) rotate(180deg); 
+  }
+}
+
+/* Light Mode Cursor - Only Effects, No Circle */
+.modern-cursor.light-mode {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  border: none;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  /* Hide the main cursor circle completely in light mode */
+}
+
+.modern-cursor.light-mode.active {
+  width: 0px;
+  height: 0px;
+  border: none;
+  background: transparent;
+  /* Keep it hidden even when active */
+}
+
+/* Light Mode Trail - Colorful and Elegant */
+.cursor-trail.light-trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(circle, #667eea, #764ba2);
+  transform: translate(-50%, -50%);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: lightTrailFloat 0.6s ease-out;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.6), 
+              0 0 30px rgba(118, 75, 162, 0.4);
+}
+
+@keyframes lightTrailFloat {
+  0% { 
+    opacity: 0.8; 
+    transform: translate(-50%, -50%) scale(1.3) rotate(0deg); 
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.1) rotate(90deg); 
+    box-shadow: 0 0 25px rgba(118, 75, 162, 0.6); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0.2) rotate(180deg); 
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.2); 
+  }
+}
+
+/* Light Mode Sparkles */
+.cursor-sparkle.light-sparkle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: lightSparkle 0.8s ease-out;
+}
+
+@keyframes lightSparkle {
+  0% { 
+    opacity: 0.9; 
+    transform: translate(-50%, -50%) scale(1.2) rotate(0deg); 
+  }
+  50% { 
+    opacity: 0.6; 
+    transform: translate(-50%, -50%) scale(1.4) rotate(45deg); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0) rotate(90deg); 
+  }
 }
 
 .about-section {
@@ -3515,6 +3946,11 @@ body.light-theme .btn-modern .btn-text {
   opacity: 0;
   transform: translateX(100px) scale(0.9);
   transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Performance optimizations */
+  will-change: opacity, transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .timeline-item:nth-child(even) {
@@ -3527,6 +3963,7 @@ body.light-theme .btn-modern .btn-text {
 .timeline-item.animate {
   opacity: 1;
   transform: translateX(0) scale(1);
+  will-change: auto; /* Remove will-change after animation */
 }
 
 /* Enhanced animation with glow effect when animated */
@@ -4105,6 +4542,8 @@ body.light-theme .btn-modern .btn-text {
   transform: translateY(30px) scale(0.9);
   animation: skillCardReveal 0.8s ease-out forwards;
   animation-delay: calc(var(--skill-index, 0) * 0.1s);
+  will-change: transform, box-shadow, border-color;
+  backface-visibility: hidden;
 }
 
 .skill-card:nth-child(1) { --skill-index: 1; }
@@ -4161,6 +4600,8 @@ body.light-theme .btn-modern .btn-text {
   height: 60px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  will-change: transform, filter;
+  backface-visibility: hidden;
 }
 
 .skill-card h3 {

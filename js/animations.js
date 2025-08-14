@@ -100,8 +100,11 @@ class AnimationController {
           
           // Add staggered reveal animation with delay
           setTimeout(() => {
-            entry.target.classList.add('animate');
-            console.log(`Timeline item ${itemIndex + 1} revealed with slide animation`);
+            // Use requestAnimationFrame for better performance
+            requestAnimationFrame(() => {
+              entry.target.classList.add('animate');
+              console.log(`Timeline item ${itemIndex + 1} revealed with slide animation`);
+            });
           }, itemIndex * 300); // 300ms stagger for better visual effect
           
           // Unobserve after animation to prevent re-triggering
