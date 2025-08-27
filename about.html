@@ -14,6 +14,12 @@
   <script src="js/animations.js" defer></script>
   <script src="js/main.js" defer></script>
   <style>
+    #intro-overlay {
+      cursor: auto;
+    }
+    #intro-enter {
+      cursor: pointer !important;
+    }
     /* Scroll reveal animation */
     .scroll-reveal {
       opacity: 0;
@@ -319,7 +325,7 @@ body.light-theme .cv-contact {
         Opening Highly Secured Information
       </div>
       <div id="intro-dive" style="font-size:2.8rem;color:#e0d6d0;letter-spacing:0.08em;margin-bottom:3.5rem;opacity:0;animation:introFadeIn 1.2s 1.2s forwards;">
-        Don't be afraid <span style="color:#00ffe7;">Tanveer</span>?
+        Don't be afraid of <span style="color:#00ffe7;">Tanveer</span>?
       </div>
       <button id="intro-enter" style="opacity:0;animation:introFadeIn 1.2s 2.2s forwards;background:#101014;border:2px solid #eaff00;border-radius:0.7em;padding:1.1em 2.8em;font-size:1.3rem;color:#eaff00;font-family:'Orbitron',sans-serif;letter-spacing:0.12em;box-shadow:0 0 0 2px #eaff00,0 0 18px #eaff0044;cursor:pointer;position:relative;transition:background 0.2s,border 0.2s,box-shadow 0.2s;outline:none;">
         ENTER
@@ -368,38 +374,47 @@ body.light-theme .cv-contact {
       <img src="assets/images/profile.png" alt="Profile Photo" draggable="false" />
       <div class="circle-frame"></div>
     </div>
-    <div class="cv-section-title"><i>👤</i>PROFILE</div>
-    <ul class="cv-list">
-      <li>Co-operative</li>
-      <li>Self-confident</li>
-      <li>Adaptable</li>
-      <li>Energetic</li>
-      <li>Quick Learner</li>
-    </ul>
-    <div class="cv-section-title"><i>📋</i>PERSONAL INFORMATION</div>
-    <ul class="cv-list">
-      <li>Father: Md. Abu Hanif Khan</li>
-      <li>Mother: Mst. Shamsunnahar</li>
-      <li>DOB: 01-08-2002</li>
-      <li>Blood Group: A+</li>
-      <li>Marital Status: Single</li>
-      <li>Religion: Islam</li>
-      <li>Nationality: Bangladeshi</li>
-      <li>NID: 6923106113</li>
-    </ul>
-    <div class="cv-section-title"><i>📞</i>CONTACT</div>
-    <div class="cv-contact-group">
-      <div class="cv-contact"><strong>Present Address:</strong><br>Shihab Villa, Mirer Chandgao,<br>Ashulia, Savar, Dhaka</div>
-      <div class="cv-contact"><strong>Permanent Address:</strong><br>Durgapur, Aminpur,<br>Pabna</div>
-      <div class="cv-contact"><strong>Email:</strong><br>tanveerk.eee@gmail.com</div>
+    <div class="cv-sidebar-column">
+      <div class="cv-section-title"><i>👤</i>PROFILE</div>
+      <ul class="cv-list">
+        <li>Co-operative</li>
+        <li>Self-confident</li>
+        <li>Adaptable</li>
+        <li>Energetic</li>
+        <li>Quick Learner</li>
+      </ul>
+      <div class="cv-section-title"><i>📋</i>PERSONAL INFORMATION</div>
+      <ul class="cv-list">
+        <li>Father: Md. Abu Hanif Khan</li>
+        <li>Mother: Mst. Shamsunnahar</li>
+        <li>DOB: 01-08-2002</li>
+        <li>Blood Group: A+</li>
+        <li>Marital Status: Single</li>
+        <li>Religion: Islam</li>
+        <li>Nationality: Bangladeshi</li>
+        <li>NID: 6923106113</li>
+      </ul>
+      <div class="cv-section-title"><i>📞</i>CONTACT</div>
+      <div class="cv-contact-group">
+        <div class="cv-contact"><strong>Present Address:</strong><br>Shihab Villa, Mirer Chandgao,<br>Ashulia, Savar, Dhaka</div>
+        <div class="cv-contact"><strong>Permanent Address:</strong><br>Durgapur, Aminpur,<br>Pabna</div>
+        <div class="cv-contact"><strong>Email:</strong><br>tanveerk.eee@gmail.com</div>
+      </div>
+      <div class="cv-section-title"><i>🎯</i>HOBBIES</div>
+      <ul class="cv-list">
+        <li>Playing</li>
+        <li>Traveling</li>
+        <li>Music</li>
+        <li>Reading</li>
+      </ul>
     </div>
-    <div class="cv-section-title"><i>🎯</i>HOBBIES</div>
-    <ul class="cv-list">
-      <li>Playing</li>
-      <li>Traveling</li>
-      <li>Music</li>
-      <li>Reading</li>
-    </ul>
+    .cv-sidebar-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      width: 100%;
+    }
   </aside>
   <main class="cv-main scroll-reveal">
     <h1>Kawsar Mahmud Tanveer Khan</h1>
@@ -683,4 +698,3 @@ body.light-theme .cv-contact {
 </script>
 </body>
 </html>
-
