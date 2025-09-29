@@ -1,0 +1,90 @@
+/* ============================================
+   COPY PROTECTION SYSTEM - NO CUSTOM CURSORS
+   ============================================ */
+
+/* Copy Protection (No Custom Cursors) */
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Animated Error Popup */
+.copy-error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+    z-index: 10000;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    animation: popupError 2s ease-in-out;
+    pointer-events: none;
+}
+
+.copy-error-popup .error-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: shake 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes popupError {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(-180deg); opacity: 0; }
+    15% { transform: translate(-50%, -50%) scale(1.2) rotate(-10deg); opacity: 1; }
+    30% { transform: translate(-50%, -50%) scale(0.9) rotate(5deg); }
+    45% { transform: translate(-50%, -50%) scale(1.05) rotate(-2deg); }
+    60% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    85% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(0) rotate(180deg); opacity: 0; }
+}
+
+@keyframes shake {
+    0% { transform: translateX(-2px) rotate(-2deg); }
+    100% { transform: translateX(2px) rotate(2deg); }
+}
+
+/* Floating Animated Element */
+.floating-gif {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: floatAway 3s ease-out forwards;
+}
+
+@keyframes floatAway {
+    0% {
+        opacity: 1;
+        transform: scale(0) rotate(0deg);
+    }
+    20% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5) rotate(720deg) translateY(-200px);
+    }
+}
+
+/* ============================================
+   CUSTOMIZATION GUIDE:
+   
+   1. Change popup colors:
+      background: linear-gradient(135deg, #your-color, #your-lighter-color);
+   
+   2. Modify animation speeds:
+      Change animation duration values (e.g., 2s, 3s)
+   
+   3. Add to any website by including this CSS file
+   
+   Note: This version uses default cursors instead of custom ones
+   ============================================ */
