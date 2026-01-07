@@ -4082,32 +4082,19 @@ input[type="button"],
   animation-delay: 1.3s;
 }
 
-/* Accessibility: Disable complex animations for users who prefer reduced motion */
+/* Accessibility: Simple animations for users who prefer reduced motion */
+/* Note: Global reduced motion rules in responsive.css will override these with instant transitions */
 @media (prefers-reduced-motion: reduce) {
   .timeline-item,
   .timeline-item:nth-child(even) {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
   }
   
   .timeline-item.animate,
   .timeline-item:nth-child(even).animate {
     opacity: 1;
     transform: translateY(0);
-    animation: timeline-simple-fade 0.3s ease forwards;
-  }
-  
-  /* Simple fade-in animation for reduced motion */
-  @keyframes timeline-simple-fade {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 }
 

@@ -818,24 +818,6 @@
   }
 }
 
-/* Accessibility: Reduced motion for mobile (applies globally, not nested) */
-@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
-  .timeline-item,
-  .timeline-item:nth-child(even) {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    animation: none;
-  }
-  
-  .timeline-item.animate,
-  .timeline-item:nth-child(even).animate {
-    opacity: 1;
-    transform: translateY(0);
-    animation: none;
-  }
-}
-
   /* Projects */
   .projects-grid {
     grid-template-columns: 1fr;
