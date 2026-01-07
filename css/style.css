@@ -4084,32 +4084,22 @@ input[type="button"],
 
 /* Accessibility: Disable complex animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .timeline-item {
+  .timeline-item,
+  .timeline-item:nth-child(even) {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
-    animation: none;
   }
   
-  .timeline-item.animate {
+  .timeline-item.animate,
+  .timeline-item:nth-child(even).animate {
     opacity: 1;
     transform: translateY(0);
-    animation: none;
+    animation: timeline-simple-fade 0.3s ease forwards;
   }
   
-  /* Simple keyframe animations for reduced motion */
-  @keyframes timeline-tree-grow-right {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes timeline-tree-grow-left {
+  /* Simple fade-in animation for reduced motion */
+  @keyframes timeline-simple-fade {
     from {
       opacity: 0;
       transform: translateY(20px);
