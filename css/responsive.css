@@ -79,7 +79,7 @@
     text-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
     white-space: normal;
     overflow: visible;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     hyphens: auto;
   }
   
@@ -396,7 +396,7 @@
     margin-bottom: 1rem;
     white-space: normal;
     overflow: visible;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     hyphens: auto;
   }
   
