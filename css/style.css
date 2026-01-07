@@ -4070,8 +4070,16 @@ input[type="button"],
   animation-delay: 0.7s;
 }
 
-.timeline-item:nth-child(n+5) {
-  animation-delay: calc(0.7s + (var(--item-index, 0) * 0.2s));
+.timeline-item:nth-child(5) {
+  animation-delay: 0.9s;
+}
+
+.timeline-item:nth-child(6) {
+  animation-delay: 1.1s;
+}
+
+.timeline-item:nth-child(n+7) {
+  animation-delay: 1.3s;
 }
 
 /* Accessibility: Disable complex animations for users who prefer reduced motion */
@@ -4089,7 +4097,18 @@ input[type="button"],
     animation: none;
   }
   
-  @keyframes timeline-tree-grow-right,
+  /* Simple keyframe animations for reduced motion */
+  @keyframes timeline-tree-grow-right {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   @keyframes timeline-tree-grow-left {
     from {
       opacity: 0;
