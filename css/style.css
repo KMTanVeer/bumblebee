@@ -68,8 +68,8 @@ h1, h2, h3, h4, h5, h6 {
   --bg-light-primary: #f3f4f6;
   --bg-light-secondary: #e5e7eb;
   --bg-light-tertiary: #d1d5db;
-  --text-light-primary: #1f2937;
-  --text-light-secondary: #4b5563;
+  --text-light-primary: #000000;
+  --text-light-secondary: #1a1a1a;
   --border-light: #9ca3af;
   
   /* Typography */
@@ -829,7 +829,7 @@ body.light-theme .section-title .highlight {
 }
 
 .hero-name {
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-family: 'Georgia', 'Times New Roman', serif;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -2497,11 +2497,11 @@ body.light-theme .name-title {
 }
 
 body.light-theme .university-info {
-  color: var(--primary);
+  color: #1d4ed8;
 }
 
 body.light-theme .highlight-word {
-  color: var(--primary);
+  color: #1d4ed8;
 }
 
 body.light-theme .stat-item {
@@ -2577,35 +2577,35 @@ body.light-theme .circle {
 }
 
 body.light-theme .hero-name {
-  background: linear-gradient(135deg, #dc2626, #ea580c, #d97706, #ca8a04);
+  background: linear-gradient(135deg, #b91c1c, #c2410c, #b45309, #a16207);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: 
-    0 0 20px rgba(220, 38, 38, 0.2),
-    0 0 40px rgba(202, 138, 4, 0.1);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    0 0 20px rgba(185, 28, 28, 0.25),
+    0 0 40px rgba(161, 98, 7, 0.15);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 body.light-theme .hero-greeting {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 body.light-theme .hero-title {
-  color: #374151;
+  color: #000000;
 }
 
 body.light-theme .hero-university {
-  color: #6b7280;
+  color: #1a1a1a;
 }
 
 body.light-theme .hero-description {
-  color: #6b7280;
+  color: #1a1a1a;
 }
 
 body.light-theme .hero-optimistic {
-  color: #4b5563 !important;
+  color: #1a1a1a !important;
 }
 
 body.light-theme .university-icon {
@@ -2685,11 +2685,11 @@ body.light-theme .timeline-content:hover {
 }
 
 body.light-theme .timeline-content h3 {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .timeline-content p {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 body.light-theme .timeline-dot {
@@ -2714,7 +2714,7 @@ body.light-theme .skill-card:hover {
 }
 
 body.light-theme .skill-card h3 {
-  color: #1f2937;
+  color: #000000;
 }
 
 /* Light Theme for Projects Section */
@@ -2730,16 +2730,16 @@ body.light-theme .project-card:hover {
 }
 
 body.light-theme .project-card h3 {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .project-card p {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 body.light-theme .project-tech {
   background: #f3f4f6;
-  color: #374151;
+  color: #000000;
   border: 1px solid #d1d5db;
 }
 
@@ -2756,11 +2756,11 @@ body.light-theme .education-card:hover {
 }
 
 body.light-theme .education-card h3 {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .education-card p {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 /* Light Theme for Contact Section */
@@ -2774,7 +2774,7 @@ body.light-theme .form-group input,
 body.light-theme .form-group textarea {
   background: #f9fafb;
   border: 1px solid #d1d5db;
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .form-group input:focus,
@@ -2785,7 +2785,7 @@ body.light-theme .form-group textarea:focus {
 }
 
 body.light-theme .form-group label {
-  color: #374151;
+  color: #000000;
 }
 
 body.light-theme .contact-info-item {
@@ -2800,11 +2800,11 @@ body.light-theme .contact-info-item:hover {
 }
 
 body.light-theme .contact-info-item h4 {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .contact-info-item p {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 /* Light Theme for Certificate Section */
@@ -2820,11 +2820,11 @@ body.light-theme .certificate-card:hover {
 }
 
 body.light-theme .certificate-card h3 {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .certificate-card p {
-  color: #4b5563;
+  color: #1a1a1a;
 }
 
 /* Light Theme for Navigation */
@@ -2841,7 +2841,7 @@ body.light-theme .navbar.scrolled {
 }
 
 body.light-theme .nav-link {
-  color: #1f2937;
+  color: #000000;
 }
 
 body.light-theme .nav-link:hover {
@@ -2853,7 +2853,7 @@ body.light-theme .nav-link.active {
 }
 
 body.light-theme .brand-text {
-  color: #1f2937;
+  color: #000000;
 }
 
 /* Light Theme for Footer */
@@ -2863,11 +2863,11 @@ body.light-theme footer {
 }
 
 body.light-theme .footer-content p {
-  color: #6b7280;
+  color: #1a1a1a;
 }
 
 body.light-theme .social-links a {
-  color: #4b5563;
+  color: #1a1a1a;
   border: 1px solid #d1d5db;
 }
 
@@ -2881,7 +2881,7 @@ body.light-theme .social-links a:hover {
 body.light-theme .theme-toggle {
   background: #f3f4f6;
   border: 1px solid #d1d5db;
-  color: #374151;
+  color: #000000;
 }
 
 body.light-theme .theme-toggle:hover {
@@ -2890,7 +2890,7 @@ body.light-theme .theme-toggle:hover {
 }
 
 body.light-theme .theme-toggle span {
-  color: #1f2937;
+  color: #000000;
 }
 
 /* Modern Colorful Cursor Effects */
