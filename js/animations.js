@@ -119,15 +119,29 @@ class AnimationController {
       timelineObserver.observe(item);
     });
 
-    // Handle items already in view
-    setTimeout(() => {
+    // Handle items already in view - check immediately and then again after short delay
+    const checkVisibleItems = () => {
       timelineItems.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-          item.classList.add('animate');
+          // Add animate class with staggered delay
+          setTimeout(() => {
+            item.classList.add('animate');
+          }, index * 180);
         }
       });
-    }, 300);
+    };
+
+    // Check immediately
+    checkVisibleItems();
+    
+    // Check again after page fully loads
+    setTimeout(checkVisibleItems, 100);
+    
+    // Also check on window load event for extra reliability
+    window.addEventListener('load', () => {
+      setTimeout(checkVisibleItems, 50);
+    });
 
     this.observers.set('timeline', timelineObserver);
   }
