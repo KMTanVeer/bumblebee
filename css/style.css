@@ -4018,11 +4018,24 @@ input[type="button"],
 
 /* Animated state: tree-like growth animation triggered by scroll */
 .timeline-item.animate {
-  animation: timeline-tree-grow-right 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: timeline-tree-grow-right 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
 }
 
 .timeline-item:nth-child(even).animate {
-  animation: timeline-tree-grow-left 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: timeline-tree-grow-left 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* Fallback: Show timeline items after 2.5 seconds if not animated by JS */
+/* This ensures content is always visible even if JS fails or is slow */
+@keyframes timeline-fallback-show {
+  to {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotateY(0deg);
+  }
+}
+
+.timeline-item:not(.animate) {
+  animation: timeline-fallback-show 0.8s ease-out 2.5s forwards;
 }
 
 /* Hover effects for timeline cards */
