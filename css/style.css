@@ -4070,6 +4070,38 @@ input[type="button"],
   animation-delay: 0.7s;
 }
 
+.timeline-item:nth-child(n+5) {
+  animation-delay: calc(0.7s + (var(--item-index, 0) * 0.2s));
+}
+
+/* Accessibility: Disable complex animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: none;
+  }
+  
+  .timeline-item.animate {
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
+  }
+  
+  @keyframes timeline-tree-grow-right,
+  @keyframes timeline-tree-grow-left {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 .timeline-dot {
   position: absolute;
   left: 50%;
