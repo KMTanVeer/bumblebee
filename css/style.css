@@ -3950,7 +3950,6 @@ input[type="button"],
   align-items: center;
   opacity: 0;
   transform: translate(0, 80px) scale(0.3) rotateY(-15deg);
-  transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: opacity, transform;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -4026,21 +4025,6 @@ input[type="button"],
   animation: timeline-tree-grow-left 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* Enhanced animation with glow effect when animated */
-.timeline-item.animate .timeline-content {
-  box-shadow: 
-    0 8px 32px rgba(64, 224, 208, 0.15),
-    0 0 0 1px rgba(64, 224, 208, 0.08);
-}
-
-.timeline-item.animate .timeline-dot {
-  transform: translateX(-50%) scale(1.1);
-  box-shadow: 
-    0 0 20px rgba(64, 224, 208, 0.6),
-    0 0 40px rgba(64, 224, 208, 0.3),
-    0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 /* Hover effects for timeline cards */
 .timeline-item:hover .timeline-content {
   transform: scale(1.02);
@@ -4080,22 +4064,6 @@ input[type="button"],
 
 .timeline-item:nth-child(n+7) {
   animation-delay: 1.3s;
-}
-
-/* Accessibility: Simple animations for users who prefer reduced motion */
-/* Note: Global reduced motion rules in responsive.css will override these with instant transitions */
-@media (prefers-reduced-motion: reduce) {
-  .timeline-item,
-  .timeline-item:nth-child(even) {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  .timeline-item.animate,
-  .timeline-item:nth-child(even).animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .timeline-dot {
