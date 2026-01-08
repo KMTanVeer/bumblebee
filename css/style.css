@@ -284,6 +284,15 @@ body.light-theme {
   font-family: var(--font-cyber);
 }
 
+.section-title-static {
+  color: #00f5ff;
+  text-shadow: 
+    0 0 10px rgba(0, 245, 255, 0.8),
+    0 0 20px rgba(0, 245, 255, 0.6),
+    0 0 30px rgba(0, 245, 255, 0.4);
+  font-family: var(--font-cyber);
+}
+
 .glow-text {
   text-shadow: 
     0 0 5px currentColor,
@@ -4228,8 +4237,8 @@ input[type="button"],
 
 .certificates-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   margin-top: 3rem;
   opacity: 0;
   transform: translateY(50px);
@@ -4498,6 +4507,13 @@ input[type="button"],
 }
 
 /* Responsive adjustments for certificates */
+@media (max-width: 1024px) {
+  .certificates-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .certificates-showcase {
     grid-template-columns: 1fr;
@@ -4601,7 +4617,7 @@ input[type="button"],
   background: var(--bg-primary);
   border-radius: 20px;
   padding: 2rem 1.5rem;
-  border: 1px solid var(--border);
+  border: 2px solid rgba(0, 245, 255, 0.3);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -4613,6 +4629,7 @@ input[type="button"],
   animation-delay: calc(var(--skill-index, 0) * 0.1s);
   will-change: transform, box-shadow, border-color;
   backface-visibility: hidden;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
 }
 
 .skill-card:nth-child(1) { --skill-index: 1; }
@@ -4692,7 +4709,6 @@ input[type="button"],
   opacity: 0;
   z-index: -1;
   transition: opacity 0.4s ease;
-  animation: skillGlow 3s ease-in-out infinite;
 }
 
 .skill-card:hover {
@@ -6020,7 +6036,7 @@ input[type="button"],
   justify-content: center;
   gap: 2rem;
   margin-bottom: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .footer-links a {

@@ -1460,7 +1460,8 @@ class CertificateVerification {
         skills: ['AI Prompt Engineering', 'LLM Optimization', 'ChatGPT Mastery', 'AI Content Creation'],
         description: 'Advanced certification in AI Prompt Engineering covering LLM optimization, conversation design, and AI-powered content creation.',
         blockchainVerified: true,
-        logo: '🤖'
+        logo: '🤖',
+        imagePath: 'assets/images/AIcertified.jpg'
       },
       {
         title: 'Business English Certificate',
@@ -1474,7 +1475,8 @@ class CertificateVerification {
         skills: ['Business Communication', 'Professional Writing', 'Presentation Skills', 'International Business'],
         description: 'Comprehensive Business English certification focusing on professional communication, business writing, and international business practices.',
         blockchainVerified: false,
-        logo: '🎓'
+        logo: '🎓',
+        imagePath: 'assets/images/EnglishCertification.jpeg'
       },
       {
         title: 'PLC & Mechatronics Systems Engineer',
@@ -1488,7 +1490,8 @@ class CertificateVerification {
         skills: ['PLC Programming', 'Industrial Automation', 'Mechatronics Design', 'SCADA Systems', 'Motor Control'],
         description: 'Advanced technical certification in PLC programming and mechatronics systems, covering industrial automation, motor control, and SCADA implementation.',
         blockchainVerified: false,
-        logo: '⚙️'
+        logo: '⚙️',
+        imagePath: 'assets/images/PLCMechatronicsCertificate.jpg'
       }
     ];
 
@@ -1565,6 +1568,11 @@ class CertificateVerification {
         </div>
         
         <div class="modal-body advanced-body">
+          <div class="cert-image-container">
+            <img src="${cert.imagePath}" alt="${cert.title}" class="cert-full-image" onclick="window.open('${cert.imagePath}', '_blank')">
+            <div class="image-zoom-hint">Click to view full size</div>
+          </div>
+
           <div class="cert-title-section">
             <h3>${cert.title}</h3>
             <p class="cert-description">${cert.description}</p>
@@ -2011,8 +2019,10 @@ const certificateCSS = `
   }
   
   .modal-content.advanced-content {
-    max-width: 600px;
+    max-width: 900px;
     width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
     background: var(--bg-secondary);
     border: 2px solid var(--border);
     border-radius: 25px;
@@ -2106,6 +2116,52 @@ const certificateCSS = `
 
   .modal-body.advanced-body {
     padding: 2.5rem;
+  }
+
+  .cert-image-container {
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .cert-image-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
+  }
+
+  .cert-full-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .cert-full-image:hover {
+    transform: scale(1.02);
+  }
+
+  .image-zoom-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .cert-image-container:hover .image-zoom-hint {
+    opacity: 1;
   }
 
   .cert-title-section {
