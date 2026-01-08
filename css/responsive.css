@@ -836,8 +836,8 @@
 
   /* Footer */
   .footer-links {
-    flex-direction: column;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .footer-social {
