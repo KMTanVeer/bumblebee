@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - CV | Kawsar Mahmud Tanveer Khan</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional CV of Kawsar Mahmud Tanveer Khan - Electrical and Electronic Engineering Student">
+    <meta name="keywords" content="Kawsar Mahmud Tanveer Khan, CV, Resume, EEE, Network Engineer">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- docx generation library -->
+    <script src="https://unpkg.com/docx@7.8.2/build/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 0;
+            position: relative;
+        }
+        
+        /* Download Button */
+        .download-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .download-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f0f0f0;
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-icon {
+            font-size: 20px;
+        }
+        
+        /* CV Content */
+        .cv-content {
+            padding: 40px 50px;
+        }
+        
+        /* Header */
+        .cv-header {
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .cv-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cv-title {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .cv-contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .cv-contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Sections */
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-transform: uppercase;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-content {
+            color: #444;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Lists */
+        .cv-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .cv-list li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .cv-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        /* Info Items */
+        .info-item {
+            margin-bottom: 8px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .info-value {
+            color: #555;
+        }
+        
+        /* Experience/Education Items */
+        .item-block {
+            margin-bottom: 20px;
+        }
+        
+        .item-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .item-subtitle {
+            color: #667eea;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+        
+        .item-date {
+            color: #777;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 2px;
+        }
+        
+        .item-description {
+            margin-top: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .skill-category-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .skill-category li {
+            padding: 4px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        /* Reference */
+        .reference-block {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .reference-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .reference-info {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-content {
+                padding: 30px 20px;
+            }
+            
+            .cv-name {
+                font-size: 24px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cv-contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .download-section {
+                display: none;
+            }
+            
+            .cv-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Download Button Section -->
+        <div class="download-section">
+            <button class="download-btn" onclick="downloadCV()">
+                <span class="download-icon">📥</span>
+                Download CV as DOCX
+            </button>
+        </div>
+        
+        <!-- CV Content -->
+        <div class="cv-content" id="cv-content">
+            <!-- Header -->
+            <div class="cv-header">
+                <h1 class="cv-name">Kawsar Mahmud Tanveer Khan</h1>
+                <div class="cv-title">Electrical & Electronic Engineering Student</div>
+                <div class="cv-contact-info">
+                    <span>📧 tanveerk.eee@gmail.com</span>
+                    <span>📱 +880-1813065665</span>
+                    <span>📍 Ashulia, Savar, Dhaka, Bangladesh</span>
+                </div>
+            </div>
+            
+            <!-- Career Objective -->
+            <div class="cv-section">
+                <h2 class="section-title">Career Objective</h2>
+                <div class="section-content">
+                    To establish myself as a Network Engineer or Communication Specialist in a multinational environment, where I can integrate research-driven approaches with practical solutions. My goal is to innovate in communication and networking technologies, contribute to cutting-edge projects, and create impactful advancements that strengthen both organizational growth and global connectivity.
+                </div>
+            </div>
+            
+            <!-- Personal Information -->
+            <div class="cv-section">
+                <h2 class="section-title">Personal Information</h2>
+                <div class="two-column">
+                    <div>
+                        <div class="info-item">
+                            <span class="info-label">Father's Name:</span>
+                            <span class="info-value">Md. Abu Hanif Khan</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Mother's Name:</span>
+                            <span class="info-value">Mst. Shamsunnahar</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Date of Birth:</span>
+                            <span class="info-value">August 01, 2002</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Blood Group:</span>
+                            <span class="info-value">A+</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-item">
+                            <span class="info-label">Marital Status:</span>
+                            <span class="info-value">Single</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Religion:</span>
+                            <span class="info-value">Islam</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Nationality:</span>
+                            <span class="info-value">Bangladeshi</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">NID:</span>
+                            <span class="info-value">6923106113</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <div class="cv-section">
+                <h2 class="section-title">Education</h2>
+                <div class="item-block">
+                    <div class="item-title">Bachelor of Science in Electrical & Electronic Engineering</div>
+                    <div class="item-subtitle">Daffodil International University, Dhaka</div>
+                    <div class="item-date">2022 - 2025</div>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">Higher Secondary Certificate (HSC) in Science</div>
+                    <div class="item-subtitle">BAF Shaheen College Dhaka</div>
+                    <div class="item-date">2017 - 2019</div>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">Secondary School Certificate (SSC) in Science</div>
+                    <div class="item-subtitle">Dulai High School, Pabna</div>
+                    <div class="item-date">2017</div>
+                </div>
+            </div>
+            
+            <!-- Industrial Training -->
+            <div class="cv-section">
+                <h2 class="section-title">Industrial Training</h2>
+                <div class="item-block">
+                    <div class="item-title">Mechatronics & PLC</div>
+                    <div class="item-subtitle">Bangladesh Industrial Technical Assistance Center (BITAC)</div>
+                    <div class="item-date">January 12, 2025 - February 10, 2025</div>
+                    <div class="item-description">
+                        Completed comprehensive training program in Mechatronics and Programmable Logic Controllers (PLC). Received certification upon successful completion.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills -->
+            <div class="cv-section">
+                <h2 class="section-title">Skills & Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="skill-category-title">Programming Languages</div>
+                        <ul>
+                            <li>C++</li>
+                            <li>Python</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-category-title">Technical Software</div>
+                        <ul>
+                            <li>AutoCAD</li>
+                            <li>MATLAB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-category-title">Office Applications</div>
+                        <ul>
+                            <li>Microsoft Word</li>
+                            <li>Microsoft Excel</li>
+                            <li>MS PowerPoint</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-category-title">Professional Skills</div>
+                        <ul>
+                            <li>Training & Development</li>
+                            <li>Team Collaboration</li>
+                            <li>Quick Learning</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Language Proficiency -->
+            <div class="cv-section">
+                <h2 class="section-title">Language Proficiency</h2>
+                <div class="item-block">
+                    <div class="item-title">Bangla</div>
+                    <div class="item-description">Native proficiency in written and oral communication</div>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">English</div>
+                    <div class="item-description">
+                        Professional proficiency in written and oral communication<br>
+                        <strong>Certification:</strong> Business English: Networking - University of Washington (via Coursera)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Profile Traits -->
+            <div class="cv-section">
+                <h2 class="section-title">Professional Profile</h2>
+                <ul class="cv-list">
+                    <li>Co-operative team player with strong interpersonal skills</li>
+                    <li>Self-confident and proactive in problem-solving</li>
+                    <li>Adaptable to changing environments and technologies</li>
+                    <li>Energetic and enthusiastic about learning</li>
+                    <li>Quick learner with strong analytical abilities</li>
+                </ul>
+            </div>
+            
+            <!-- Hobbies & Interests -->
+            <div class="cv-section">
+                <h2 class="section-title">Hobbies & Interests</h2>
+                <ul class="cv-list">
+                    <li>Playing sports and outdoor activities</li>
+                    <li>Traveling and exploring new places</li>
+                    <li>Music appreciation and listening</li>
+                    <li>Reading technical and non-technical literature</li>
+                </ul>
+            </div>
+            
+            <!-- Address Information -->
+            <div class="cv-section">
+                <h2 class="section-title">Address</h2>
+                <div class="two-column">
+                    <div>
+                        <div class="info-item">
+                            <span class="info-label">Present Address:</span><br>
+                            <span class="info-value">Shihab Villa, Mirer Chandgao, Ashulia, Savar, Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-item">
+                            <span class="info-label">Permanent Address:</span><br>
+                            <span class="info-value">Durgapur, Aminpur, Pabna, Bangladesh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reference -->
+            <div class="cv-section">
+                <h2 class="section-title">Reference</h2>
+                <div class="reference-block">
+                    <div class="reference-name">Salman Khan Tushar</div>
+                    <div class="reference-info">
+                        Network Engineer<br>
+                        Express Systems Limited<br>
+                        House 5/2, Road 01, Shayamoli, Dhaka – 1207, Bangladesh<br>
+                        Office: +880-1973492996<br>
+                        Mobile: +880-1813065665<br>
+                        Email: salman.khan@esl.com.bd<br>
+                        Website: www.esl.com.bd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        async function downloadCV() {
+            const { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, BorderStyle, convertInchesToTwip } = docx;
+            
+            // Create a new document
+            const doc = new Document({
+                sections: [{
+                    properties: {
+                        page: {
+                            margin: {
+                                top: convertInchesToTwip(0.75),
+                                right: convertInchesToTwip(0.75),
+                                bottom: convertInchesToTwip(0.75),
+                                left: convertInchesToTwip(0.75),
+                            },
+                        },
+                    },
+                    children: [
+                        // Header - Name
+                        new Paragraph({
+                            text: "KAWSAR MAHMUD TANVEER KHAN",
+                            heading: HeadingLevel.HEADING_1,
+                            alignment: AlignmentType.CENTER,
+                            spacing: {
+                                after: 100,
+                            },
+                        }),
+                        
+                        // Subtitle
+                        new Paragraph({
+                            alignment: AlignmentType.CENTER,
+                            spacing: {
+                                after: 100,
+                            },
+                            children: [
+                                new TextRun({
+                                    text: "Electrical & Electronic Engineering Student",
+                                    bold: true,
+                                    size: 22,
+                                }),
+                            ],
+                        }),
+                        
+                        // Contact Info
+                        new Paragraph({
+                            alignment: AlignmentType.CENTER,
+                            spacing: {
+                                after: 300,
+                            },
+                            children: [
+                                new TextRun({
+                                    text: "Email: tanveerk.eee@gmail.com | Phone: +880-1813065665",
+                                    size: 20,
+                                }),
+                                new TextRun({
+                                    text: "\nAddress: Ashulia, Savar, Dhaka, Bangladesh",
+                                    size: 20,
+                                }),
+                            ],
+                        }),
+                        
+                        // Career Objective
+                        new Paragraph({
+                            text: "CAREER OBJECTIVE",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "To establish myself as a Network Engineer or Communication Specialist in a multinational environment, where I can integrate research-driven approaches with practical solutions. My goal is to innovate in communication and networking technologies, contribute to cutting-edge projects, and create impactful advancements that strengthen both organizational growth and global connectivity.",
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Personal Information
+                        new Paragraph({
+                            text: "PERSONAL INFORMATION",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Father's Name: ", bold: true }),
+                                new TextRun("Md. Abu Hanif Khan"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Mother's Name: ", bold: true }),
+                                new TextRun("Mst. Shamsunnahar"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Date of Birth: ", bold: true }),
+                                new TextRun("August 01, 2002"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Blood Group: ", bold: true }),
+                                new TextRun("A+"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Marital Status: ", bold: true }),
+                                new TextRun("Single"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Religion: ", bold: true }),
+                                new TextRun("Islam"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Nationality: ", bold: true }),
+                                new TextRun("Bangladeshi"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "NID: ", bold: true }),
+                                new TextRun("6923106113"),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Education
+                        new Paragraph({
+                            text: "EDUCATION",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Bachelor of Science in Electrical & Electronic Engineering\n", bold: true }),
+                                new TextRun("Daffodil International University, Dhaka\n"),
+                                new TextRun({ text: "2022 - 2025", italics: true }),
+                            ],
+                            spacing: {
+                                after: 150,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Higher Secondary Certificate (HSC) in Science\n", bold: true }),
+                                new TextRun("BAF Shaheen College Dhaka\n"),
+                                new TextRun({ text: "2017 - 2019", italics: true }),
+                            ],
+                            spacing: {
+                                after: 150,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Secondary School Certificate (SSC) in Science\n", bold: true }),
+                                new TextRun("Dulai High School, Pabna\n"),
+                                new TextRun({ text: "2017", italics: true }),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Industrial Training
+                        new Paragraph({
+                            text: "INDUSTRIAL TRAINING",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Mechatronics & PLC\n", bold: true }),
+                                new TextRun("Bangladesh Industrial Technical Assistance Center (BITAC)\n"),
+                                new TextRun({ text: "January 12, 2025 - February 10, 2025\n", italics: true }),
+                                new TextRun("Completed comprehensive training program in Mechatronics and Programmable Logic Controllers (PLC). Received certification upon successful completion."),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Skills
+                        new Paragraph({
+                            text: "SKILLS & COMPETENCIES",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Programming Languages: ", bold: true }),
+                                new TextRun("C++, Python"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Technical Software: ", bold: true }),
+                                new TextRun("AutoCAD, MATLAB"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Office Applications: ", bold: true }),
+                                new TextRun("Microsoft Word, Microsoft Excel, MS PowerPoint"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Professional Skills: ", bold: true }),
+                                new TextRun("Training & Development, Team Collaboration, Quick Learning, Adaptability"),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Language Proficiency
+                        new Paragraph({
+                            text: "LANGUAGE PROFICIENCY",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Bangla: ", bold: true }),
+                                new TextRun("Native proficiency in written and oral communication"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "English: ", bold: true }),
+                                new TextRun("Professional proficiency in written and oral communication\n"),
+                                new TextRun({ text: "Certification: ", bold: true }),
+                                new TextRun("Business English: Networking - University of Washington (via Coursera)"),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Professional Profile
+                        new Paragraph({
+                            text: "PROFESSIONAL PROFILE",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Co-operative team player with strong interpersonal skills",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Self-confident and proactive in problem-solving",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Adaptable to changing environments and technologies",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Energetic and enthusiastic about learning",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Quick learner with strong analytical abilities",
+                            bullet: {
+                                level: 0,
+                            },
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Hobbies
+                        new Paragraph({
+                            text: "HOBBIES & INTERESTS",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Playing sports and outdoor activities",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Traveling and exploring new places",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Music appreciation and listening",
+                            bullet: {
+                                level: 0,
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            text: "• Reading technical and non-technical literature",
+                            bullet: {
+                                level: 0,
+                            },
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Address
+                        new Paragraph({
+                            text: "ADDRESS",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Present Address: ", bold: true }),
+                                new TextRun("Shihab Villa, Mirer Chandgao, Ashulia, Savar, Dhaka, Bangladesh"),
+                            ],
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Permanent Address: ", bold: true }),
+                                new TextRun("Durgapur, Aminpur, Pabna, Bangladesh"),
+                            ],
+                            spacing: {
+                                after: 250,
+                            },
+                        }),
+                        
+                        // Reference
+                        new Paragraph({
+                            text: "REFERENCE",
+                            heading: HeadingLevel.HEADING_2,
+                            spacing: {
+                                before: 200,
+                                after: 150,
+                            },
+                            border: {
+                                bottom: {
+                                    color: "000000",
+                                    space: 1,
+                                    style: BorderStyle.SINGLE,
+                                    size: 6,
+                                },
+                            },
+                        }),
+                        
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: "Salman Khan Tushar\n", bold: true, size: 24 }),
+                                new TextRun("Network Engineer\n"),
+                                new TextRun("Express Systems Limited\n"),
+                                new TextRun("House 5/2, Road 01, Shayamoli, Dhaka – 1207, Bangladesh\n"),
+                                new TextRun("Office: +880-1973492996\n"),
+                                new TextRun("Mobile: +880-1813065665\n"),
+                                new TextRun("Email: salman.khan@esl.com.bd\n"),
+                                new TextRun("Website: www.esl.com.bd"),
+                            ],
+                        }),
+                    ],
+                }],
+            });
+            
+            // Generate and download the document
+            try {
+                const blob = await Packer.toBlob(doc);
+                saveAs(blob, "Kawsar_Mahmud_Tanveer_Khan_CV.docx");
+            } catch (error) {
+                console.error("Error generating document:", error);
+                alert("Error generating document. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
